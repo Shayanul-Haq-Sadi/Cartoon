@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Category</key>
+	<dict>
+		<key>section 0</key>
+		<dict>
+			<key>sectionType</key>
+			<string>largeBanners</string>
+			<key>headerTitle</key>
+			<string></string>
+			<key>shouldShowMore</key>
+			<false/>
+			<key>items</key>
+			<array>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>AI Avatar</string>
+					<key>isPro</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>AI Cartoon</string>
+					<key>isPro</key>
+					<true/>
+				</dict>
+			</array>
+		</dict>
+		<key>section 1</key>
+		<dict>
+			<key>sectionType</key>
+			<string>largeBanners</string>
+			<key>headerTitle</key>
+			<string></string>
+			<key>shouldShowMore</key>
+			<false/>
+			<key>items</key>
+			<array>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>AI Avatar</string>
+					<key>isPro</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>AI Cartoon</string>
+					<key>isPro</key>
+					<true/>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="FooterWithPagerCollectionReusableView" customModule="Cartoon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="424" height="96"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NW2-yB-3I2">
+                    <rect key="frame" x="0.0" y="0.0" width="424" height="96"/>
+                    <subviews>
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="F5Y-sE-Ukc">
+                            <rect key="frame" x="154" y="35" width="116" height="26"/>
+                        </pageControl>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="F5Y-sE-Ukc" firstAttribute="centerY" secondItem="NW2-yB-3I2" secondAttribute="centerY" id="1tk-ZH-zfN"/>
+                        <constraint firstItem="F5Y-sE-Ukc" firstAttribute="centerX" secondItem="NW2-yB-3I2" secondAttribute="centerX" id="LRd-Ak-IxS"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <constraints>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="NW2-yB-3I2" secondAttribute="trailing" id="JST-2W-FDn"/>
+                <constraint firstItem="NW2-yB-3I2" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="LpW-C5-qYE"/>
+                <constraint firstItem="NW2-yB-3I2" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="NUm-8i-7xM"/>
+                <constraint firstAttribute="bottom" secondItem="NW2-yB-3I2" secondAttribute="bottom" id="jac-fo-yGv"/>
+            </constraints>
+            <connections>
+                <outlet property="pageControl" destination="F5Y-sE-Ukc" id="xWP-gt-Ocp"/>
+            </connections>
+            <point key="canvasLocation" x="145.03816793893128" y="35.91549295774648"/>
+        </collectionReusableView>
+    </objects>
+</document>
