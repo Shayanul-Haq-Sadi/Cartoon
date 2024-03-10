@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Category</key>
+	<array>
+		<dict>
+			<key>sectionType</key>
+			<string>largeBanners</string>
+			<key>headerTitle</key>
+			<string>Large Banners Header </string>
+			<key>shouldShowMore</key>
+			<false/>
+			<key>items</key>
+			<array>
+				<dict>
+					<key>text</key>
+					<string>Face Illusion Title</string>
+					<key>image</key>
+					<string>Face Illusion</string>
+					<key>description</key>
+					<string>Face Illusion description
+Hello how are you?</string>
+					<key>isPro</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>AI Cartoon Title</string>
+					<key>image</key>
+					<string>AI Cartoon</string>
+					<key>description</key>
+					<string>AI Cartoon description</string>
+					<key>isPro</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>QR Illusion Title</string>
+					<key>image</key>
+					<string>QR Illusion</string>
+					<key>description</key>
+					<string>QR Illusion description</string>
+					<key>isPro</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>AI Avatar Title</string>
+					<key>image</key>
+					<string>AI Avatar</string>
+					<key>description</key>
+					<string>AI Avatar description</string>
+					<key>isPro</key>
+					<false/>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>sectionType</key>
+			<string>faceIllusion</string>
+			<key>headerTitle</key>
+			<string>Face Illusion Header</string>
+			<key>shouldShowMore</key>
+			<false/>
+			<key>items</key>
+			<array>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>AI Avatar</string>
+					<key>description</key>
+					<string>description</string>
+					<key>isPro</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>AI Cartoon</string>
+					<key>description</key>
+					<string>description</string>
+					<key>isPro</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>AI Cartoon</string>
+					<key>description</key>
+					<string>description</string>
+					<key>isPro</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>AI Cartoon</string>
+					<key>description</key>
+					<string>description</string>
+					<key>isPro</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>AI Cartoon</string>
+					<key>description</key>
+					<string>description</string>
+					<key>isPro</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>AI Cartoon</string>
+					<key>description</key>
+					<string>description</string>
+					<key>isPro</key>
+					<true/>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>sectionType</key>
+			<string>realisticThumbs</string>
+			<key>headerTitle</key>
+			<string>Realistic Thumbs Header </string>
+			<key>shouldShowMore</key>
+			<true/>
+			<key>items</key>
+			<array>
+				<dict>
+					<key>text</key>
+					<string>Abstract_real Title</string>
+					<key>image</key>
+					<string>Abstract_real</string>
+					<key>description</key>
+					<string>Abstract_real description</string>
+					<key>isPro</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Comic_real Title</string>
+					<key>image</key>
+					<string>Comic_real</string>
+					<key>description</key>
+					<string>Comic_real description</string>
+					<key>isPro</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Trendy_real Title</string>
+					<key>image</key>
+					<string>Trendy_real</string>
+					<key>description</key>
+					<string>Trendy_real description</string>
+					<key>isPro</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Modern Art_real Title</string>
+					<key>image</key>
+					<string>Modern Art_real</string>
+					<key>description</key>
+					<string>Modern Art_real description</string>
+					<key>isPro</key>
+					<true/>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>sectionType</key>
+			<string>smallBanners</string>
+			<key>headerTitle</key>
+			<string>Small Banners Header</string>
+			<key>shouldShowMore</key>
+			<false/>
+			<key>items</key>
+			<array>
+				<dict>
+					<key>text</key>
+					<string>Cartoon_Small Title</string>
+					<key>image</key>
+					<string>Cartoon_Small</string>
+					<key>description</key>
+					<string>Cartoon_Small description</string>
+					<key>isPro</key>
+					<false/>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>sectionType</key>
+			<string>smallBanners</string>
+			<key>headerTitle</key>
+			<string>Small Banners Header</string>
+			<key>shouldShowMore</key>
+			<false/>
+			<key>items</key>
+			<array>
+				<dict>
+					<key>text</key>
+					<string>Pet_Small Title</string>
+					<key>image</key>
+					<string>Pet_Small</string>
+					<key>description</key>
+					<string>Pet_Small description</string>
+					<key>isPro</key>
+					<true/>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
