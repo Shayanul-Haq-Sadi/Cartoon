@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +22,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Face Illusion" translatesAutoresizingMaskIntoConstraints="NO" id="Hji-Ya-fQm">
                                 <rect key="frame" x="0.0" y="0.0" width="413" height="366"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AvatarBannerShade" translatesAutoresizingMaskIntoConstraints="NO" id="BM0-SC-NjS">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AvatarBannerShade" translatesAutoresizingMaskIntoConstraints="NO" id="BM0-SC-NjS">
                                 <rect key="frame" x="0.0" y="186" width="413" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="dbq-L5-D3a"/>
@@ -31,13 +31,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="E7e-4I-BEy">
                                 <rect key="frame" x="123" y="253" width="167" height="93"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AI Face Illusion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FmM-5k-WT7">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AI Face Illusion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FmM-5k-WT7">
                                         <rect key="frame" x="0.0" y="0.0" width="167" height="28.666666666666668"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get studio quality photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dV3-qP-nKF">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get studio quality photos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dV3-qP-nKF">
                                         <rect key="frame" x="12.333333333333343" y="28.666666666666682" width="142.33333333333334" height="14.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -74,7 +74,9 @@
             </constraints>
             <size key="customSize" width="413" height="366"/>
             <connections>
+                <outlet property="bannerDescriptionLabel" destination="dV3-qP-nKF" id="s6c-kN-Biw"/>
                 <outlet property="bannerImageView" destination="Hji-Ya-fQm" id="qSP-NB-Jmp"/>
+                <outlet property="bannerTitleLabel" destination="FmM-5k-WT7" id="FdF-QJ-D91"/>
                 <outlet property="bottomGradientImageView" destination="BM0-SC-NjS" id="lBx-zO-vq2"/>
                 <outlet property="containerView" destination="lFZ-2y-cRI" id="eXb-Kx-YEt"/>
                 <outlet property="tryNowButton" destination="vSl-27-mhT" id="2jn-AO-65Y"/>

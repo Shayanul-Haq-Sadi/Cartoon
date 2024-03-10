@@ -12,19 +12,22 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var header: UILabel!
     
     @IBOutlet weak var seeAllButton: UIButton!
+    
     @IBOutlet weak var headerBackgroundView: UIView!
     
     static let headerIdentifier = "HeaderCollectionReusableView"
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupView()
+    }
+
+    private func setupView() {
+        seeAllButton.isHidden = true
     }
     
-    func setup(head: String, font: UIFont = .systemFont(ofSize: 14, weight: .bold), showSeeAll: Bool = false) {
-        header.text = head
-        header.font = font
-//        showSeeAll ? (seeAllButton.isHidden = false) : (seeAllButton.isHidden = true)
-        
+    func setup(head: String, showSeeAll: Bool = false) {
+        header.text = head        
         seeAllButton.isHidden = !showSeeAll
     }
     

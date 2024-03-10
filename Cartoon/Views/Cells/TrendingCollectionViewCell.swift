@@ -17,6 +17,8 @@ class TrendingCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var premiumImageView: UIImageView!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
     static let identifier = "TrendingCollectionViewCell"
     
     override func awakeFromNib() {
@@ -28,10 +30,14 @@ class TrendingCollectionViewCell: UICollectionViewCell {
         containerView.layer.cornerRadius = 12
         containerView.clipsToBounds = true
         premiumImageView.layer.cornerRadius = premiumImageView.frame.width/2
+        premiumImageView.isHidden = true
+//        trendingImageView.image = nil
     }
     
-    func setup(image: String, indexPath: IndexPath, dataSize: Int) {
+    func setup(image: String, title: String, isPro: Bool = false) {
         trendingImageView.image = UIImage(named: image)
+        titleLabel.text = title
+        premiumImageView.isHidden = !isPro
     }
 
 }

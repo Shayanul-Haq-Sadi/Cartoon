@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,7 +22,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WildFire" translatesAutoresizingMaskIntoConstraints="NO" id="jKC-8Q-2ap">
                                 <rect key="frame" x="0.0" y="0.0" width="165" height="232"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell_bottom_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="Fbh-zv-GWu">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell_bottom_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="Fbh-zv-GWu">
                                 <rect key="frame" x="0.0" y="196" width="165" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="xCf-KO-O9e"/>
@@ -43,7 +42,6 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBrownColor"/>
                         <constraints>
                             <constraint firstItem="jKC-8Q-2ap" firstAttribute="leading" secondItem="Pkg-Cc-i03" secondAttribute="leading" id="1lB-W9-EBA"/>
                             <constraint firstAttribute="bottom" secondItem="jKC-8Q-2ap" secondAttribute="bottom" id="IIB-Wj-HK0"/>
@@ -72,6 +70,7 @@
                 <outlet property="bottomGradientImageView" destination="Fbh-zv-GWu" id="mvu-7X-a5z"/>
                 <outlet property="containerView" destination="Pkg-Cc-i03" id="C0Q-1Z-hxb"/>
                 <outlet property="premiumImageView" destination="hRI-gg-guY" id="vZ3-wr-pws"/>
+                <outlet property="titleLabel" destination="nZx-YF-J0m" id="HPb-fG-U5s"/>
                 <outlet property="trendingImageView" destination="jKC-8Q-2ap" id="lph-4F-h1z"/>
             </connections>
             <point key="canvasLocation" x="194.6564885496183" y="83.802816901408448"/>
@@ -81,8 +80,5 @@
         <image name="Pro" width="66" height="66"/>
         <image name="WildFire" width="512" height="512"/>
         <image name="cell_bottom_shadow" width="184" height="56"/>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

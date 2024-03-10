@@ -10,12 +10,11 @@ import UIKit
 class FooterWithPagerCollectionReusableView: UICollectionReusableView {
     
     @IBOutlet weak var pageControl: UIPageControl!
+    
     static let footerIdentifier = "footerWithPager"
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
         setupView()
     }
 

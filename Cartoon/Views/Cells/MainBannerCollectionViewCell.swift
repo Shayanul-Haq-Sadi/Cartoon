@@ -15,24 +15,29 @@ class MainBannerCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var bottomGradientImageView: UIImageView!
     
-    @IBOutlet weak var tryNowButton: UIButton!
+    @IBOutlet weak var bannerTitleLabel: UILabel!
     
+    @IBOutlet weak var bannerDescriptionLabel: UILabel!
+    
+    @IBOutlet weak var tryNowButton: UIButton!
             
     static let identifier = "CarosselCollectionViewCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         setupView()
     }
     
     private func setupView() {
         containerView.layer.cornerRadius = 12
         containerView.clipsToBounds = true
+//        bannerImageView.image = nil
     }
     
-    func setup(image: String, indexPath: IndexPath, dataSize: Int) {
+    func setup(image: String, title: String, description: String) {
         bannerImageView.image = UIImage(named: image)
+        bannerTitleLabel.text = title
+        bannerDescriptionLabel.text = description
     }
 
 }
