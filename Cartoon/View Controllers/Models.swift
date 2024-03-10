@@ -8,12 +8,10 @@
 import Foundation
 
 enum SectionType: String {
-    case largeBanners = "largeBanners"
-    case faceIllusion = "faceIllusion"
-    case disneyThumbs = "disneyThumbs"
-    case qrIllusion = "qrIllusion"
-    case realisticThumbs = "realisticThumbs"
-    case smallBanners = "smallBanners"
+    case largeBanners = "largeBanners" // main banner with pager
+    case faceIllusion = "faceIllusion" // horizontal scroll
+    case realisticThumbs = "realisticThumbs" //static scroll, max 4 items visible
+    case smallBanners = "smallBanners" // small banner with individual cell in section
 }
 
 struct SectionData {
