@@ -11,6 +11,8 @@
 		8762C00F2B987F3D003F153B /* SmallBannerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8762C00D2B987F3D003F153B /* SmallBannerCollectionViewCell.xib */; };
 		8762C0112B99DEBB003F153B /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762C0102B99DEBB003F153B /* Models.swift */; };
 		8762C0172B9DB4F3003F153B /* PreviewSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762C0162B9DB4F3003F153B /* PreviewSliderViewController.swift */; };
+		876600472BA01B4C0043FD14 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876600462BA01B4C0043FD14 /* DataManager.swift */; };
+		8766004A2BA026AD0043FD14 /* CustomCompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876600492BA026AD0043FD14 /* CustomCompositionalLayout.swift */; };
 		876715942B9F14F50025A3E1 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876715932B9F14F50025A3E1 /* Animator.swift */; };
 		876715962B9F18C60025A3E1 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876715952B9F18C60025A3E1 /* Enums.swift */; };
 		96EB1E042B95F9370079E97A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EB1E032B95F9370079E97A /* AppDelegate.swift */; };
@@ -35,6 +37,8 @@
 		8762C00D2B987F3D003F153B /* SmallBannerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallBannerCollectionViewCell.xib; sourceTree = "<group>"; };
 		8762C0102B99DEBB003F153B /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		8762C0162B9DB4F3003F153B /* PreviewSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSliderViewController.swift; sourceTree = "<group>"; };
+		876600462BA01B4C0043FD14 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		876600492BA026AD0043FD14 /* CustomCompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCompositionalLayout.swift; sourceTree = "<group>"; };
 		876715932B9F14F50025A3E1 /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		876715952B9F18C60025A3E1 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		96EB1E002B95F9370079E97A /* Cartoon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cartoon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,9 +142,18 @@
 		8762C0132B9D7CB1003F153B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				876600462BA01B4C0043FD14 /* DataManager.swift */,
 				96EB1E2B2B974C6A0079E97A /* Datasource.plist */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		876600482BA025E40043FD14 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				876600492BA026AD0043FD14 /* CustomCompositionalLayout.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		96EB1DF72B95F9370079E97A = {
@@ -164,11 +177,12 @@
 			children = (
 				96EB1E032B95F9370079E97A /* AppDelegate.swift */,
 				96EB1E052B95F9370079E97A /* SceneDelegate.swift */,
+				8762C0132B9D7CB1003F153B /* Data */,
 				8762C0072B986AC5003F153B /* Model */,
 				8762C0082B986AEF003F153B /* Views */,
 				8762C0062B986AA4003F153B /* Controllers */,
 				8762C0122B9D7C9D003F153B /* Helpers */,
-				8762C0132B9D7CB1003F153B /* Data */,
+				876600482BA025E40043FD14 /* Utility */,
 				96EB1E092B95F9370079E97A /* Main.storyboard */,
 				96EB1E0C2B95F93A0079E97A /* Assets.xcassets */,
 				96EB1E0E2B95F93A0079E97A /* LaunchScreen.storyboard */,
@@ -255,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8762C0172B9DB4F3003F153B /* PreviewSliderViewController.swift in Sources */,
+				8766004A2BA026AD0043FD14 /* CustomCompositionalLayout.swift in Sources */,
 				96EB1E082B95F9370079E97A /* HomeViewController.swift in Sources */,
 				96EB1E042B95F9370079E97A /* AppDelegate.swift in Sources */,
 				96EB1E292B97194B0079E97A /* TrendingCollectionViewCell.swift in Sources */,
@@ -265,6 +280,7 @@
 				96EB1E1D2B9603A10079E97A /* HeaderCollectionReusableView.swift in Sources */,
 				876715942B9F14F50025A3E1 /* Animator.swift in Sources */,
 				876715962B9F18C60025A3E1 /* Enums.swift in Sources */,
+				876600472BA01B4C0043FD14 /* DataManager.swift in Sources */,
 				96EB1E192B9601BA0079E97A /* MainBannerCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

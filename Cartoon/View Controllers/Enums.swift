@@ -21,6 +21,20 @@ enum NumberOfItems: Int {
     case four = 4                // show 4 items
 }
 
+enum elementKind: String {
+    case headerKind = "headerKind"
+    case footerWithPagerKind = "footerWithPagerKind"
+}
+
+enum PresentationType {
+    case present
+    case dismiss
+
+    var isPresenting: Bool {
+        return self == .present
+    }
+}
+
 enum Constants {
     static let cellSpacing: CGFloat = 28
     static let gruopSpacing: CGFloat = 16

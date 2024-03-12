@@ -8,10 +8,7 @@
 
 import UIKit
 
-// 8
 final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
-
-    // 9
 
 //    static let duration: TimeInterval = 1.25
     static let duration: TimeInterval = 0.35
@@ -21,15 +18,6 @@ final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     private let secondViewController: PreviewSliderViewController
     private var selectedCellImageViewSnapshot: UIView
     private let cellImageViewRect: CGRect
-    
-//    private let duration: TimeInterval
-//    private var operation = UINavigationController.Operation.push
-
-//    init(duration: TimeInterval, type: PresentationType) {
-//        self.duration = duration
-//        self.type = type
-////        super.init()
-//    }
 
     // 45
 //    private let cellLabelRect: CGRect
@@ -70,7 +58,6 @@ final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
                 transitionContext.completeTransition(false)
                 return
         }
-        toView.alpha = 0
         containerView.addSubview(toView)
 
         // 21
@@ -80,7 +67,7 @@ final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
             let cellImageSnapshot = selectedCell.trendingImageView.snapshotView(afterScreenUpdates: true),
             let controllerImageSnapshot = secondViewController.imageView.snapshotView(afterScreenUpdates: true),
 //            let cellLabelSnapshot = selectedCell.locationLabel.snapshotView(afterScreenUpdates: true), // 47
-            let cellLabelSnapshot = secondViewController.labelStackView.snapshotView(afterScreenUpdates: true), // 47
+//            let cellLabelSnapshot = secondViewController.labelStackView.snapshotView(afterScreenUpdates: true),  47
             let closeButtonSnapshot = secondViewController.closeButton.snapshotView(afterScreenUpdates: true) // 53
             else {
                 transitionContext.completeTransition(true)
@@ -93,9 +80,6 @@ final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         let backgroundView: UIView
         let fadeView = UIView(frame: containerView.bounds)
         fadeView.backgroundColor = secondViewController.view.backgroundColor
-//        fadeView.backgroundColor = .black.withAlphaComponent(0.2)
-//        fadeView.backgroundColor = .clear
-//        fadeView.backgroundColor = .systemBackground
 
         // 33
         if isPresenting {
@@ -104,7 +88,8 @@ final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
             // 41
             backgroundView = UIView(frame: containerView.bounds)
             backgroundView.addSubview(fadeView)
-//            fadeView.alpha = 0
+            fadeView.alpha = 0
+            toView.alpha = 0
         } else {
             backgroundView = firstViewController.view.snapshotView(afterScreenUpdates: true) ?? fadeView
             backgroundView.addSubview(fadeView)
@@ -206,15 +191,7 @@ final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
 }
 
 // 14
-enum PresentationType {
 
-    case present
-    case dismiss
-
-    var isPresenting: Bool {
-        return self == .present
-    }
-}
 
 
 //extension Animator: UINavigationControllerDelegate {
@@ -231,5 +208,148 @@ enum PresentationType {
 //        }
 //
 //        return nil
+//    }
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//final class TransitionManager: NSObject, UIViewControllerAnimatedTransitioning {
+//
+//    private let duration: TimeInterval
+//    private var operation = UINavigationController.Operation.push
+//
+//    init(duration: TimeInterval) {
+//        self.duration = duration
+//    }
+//
+//    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+//        return duration
+//    }
+//
+//    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+//        guard
+//            let fromViewController = transitionContext.viewController(forKey: .from),
+//            let toViewController = transitionContext.viewController(forKey: .to)
+//        else {
+//            transitionContext.completeTransition(false)
+//            return
+//        }
+//
+//        animateTransition(from: fromViewController, to: toViewController, with: transitionContext)
+//    }
+//}
+//
+//// MARK: - UINavigationControllerDelegate
+//
+//extension TransitionManager: UINavigationControllerDelegate {
+//    func navigationController(
+//        _ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation,
+//        from fromVC: UIViewController,
+//        to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//
+//        self.operation = operation
+//
+//        if operation == .push {
+//            return self
+//        }
+//
+//        return nil
+//    }
+//}
+//
+//
+//// MARK: - Animations
+//
+//private extension TransitionManager {
+//    func animateTransition(from fromViewController: UIViewController, to toViewController: UIViewController, with context: UIViewControllerContextTransitioning) {
+//        switch operation {
+//        case .push:
+////            guard
+////                let albumsViewController = fromViewController as? AlbumsViewController,
+////                let detailsViewController = toViewController as? AlbumDetailViewController
+////            else { return }
+//
+////            presentViewController(detailsViewController, from: albumsViewController, with: context)
+//            presentViewController(toViewController as! PreviewSliderViewController, from: fromViewController as! HomeViewController, with: context)
+//
+//        case .pop:
+////            guard
+////                let detailsViewController = fromViewController as? AlbumDetailViewController,
+////                let albumsViewController = toViewController as? AlbumsViewController
+////            else { return }
+//
+////            dismissViewController(detailsViewController, to: albumsViewController)
+//            dismissViewController(fromViewController, to: toViewController)
+//
+//        default:
+//            break
+//        }
+//    }
+//
+////    func presentViewController(_ toViewController: AlbumDetailViewController, from fromViewController: AlbumsViewController, with context: UIViewControllerContextTransitioning) {
+////    func presentViewController(_ toViewController: UIViewController, from fromViewController: UIViewController, with context: UIViewControllerContextTransitioning) {
+//    func presentViewController(_ toViewController: PreviewSliderViewController, from fromViewController: HomeViewController, with context: UIViewControllerContextTransitioning) {
+//
+//        guard
+//            let albumCell = fromViewController.currentCell,
+//            let albumCoverImageView = fromViewController.currentCell?.trendingImageView,
+//            let albumDetailHeaderView = toViewController.imageView
+//        else { return}
+//
+//        toViewController.view.layoutIfNeeded()
+//
+//        let containerView = context.containerView
+//
+//        let snapshotContentView = UIView()
+//////        snapshotContentView.backgroundColor = .albumBackgroundColor
+//        snapshotContentView.backgroundColor = .systemBackground
+//        snapshotContentView.frame = containerView.convert(albumCell.contentView.frame, from: albumCell)
+//        snapshotContentView.layer.cornerRadius = albumCell.contentView.layer.cornerRadius
+//
+//        let snapshotAlbumCoverImageView = UIImageView()
+//        snapshotAlbumCoverImageView.clipsToBounds = true
+//        snapshotAlbumCoverImageView.contentMode = albumCoverImageView.contentMode
+//        snapshotAlbumCoverImageView.image = albumCoverImageView.image
+//        snapshotAlbumCoverImageView.layer.cornerRadius = albumCoverImageView.layer.cornerRadius
+//        snapshotAlbumCoverImageView.frame = containerView.convert(albumCoverImageView.frame, from: albumCell)
+//
+//        containerView.addSubview(toViewController.view)
+//        containerView.addSubview(snapshotContentView)
+//        containerView.addSubview(snapshotAlbumCoverImageView)
+//
+//
+//        toViewController.view.isHidden = true
+//
+//        let animator = UIViewPropertyAnimator(duration: duration, curve: .easeInOut) {
+////        let animator = UIViewPropertyAnimator(duration: duration, curve: .easeOut) {
+//            snapshotContentView.frame = containerView.convert(toViewController.view.frame, from: toViewController.view)
+////            snapshotAlbumCoverImageView.frame = containerView.convert(albumDetailHeaderView.albumCoverImageView.frame, from: albumDetailHeaderView)
+//            snapshotAlbumCoverImageView.frame = containerView.convert( toViewController.imageView.frame, from: albumDetailHeaderView)
+////            snapshotAlbumCoverImageView.layer.cornerRadius = 0
+//        }
+//
+//        animator.addCompletion { position in
+//            toViewController.view.isHidden = false
+//            snapshotAlbumCoverImageView.removeFromSuperview()
+//            snapshotContentView.removeFromSuperview()
+//            context.completeTransition(position == .end)
+//        }
+//
+//        animator.startAnimation()
+//    }
+//
+////    func dismissViewController(_ fromViewController: AlbumDetailViewController, to toViewController: AlbumsViewController) {
+//    func dismissViewController(_ fromViewController: UIViewController, to toViewController: UIViewController) {
+//
 //    }
 //}

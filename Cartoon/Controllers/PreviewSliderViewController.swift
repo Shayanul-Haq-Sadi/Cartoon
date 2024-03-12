@@ -56,6 +56,5 @@ class PreviewSliderViewController: UIViewController {
         
         dismiss(animated: true)
     }
-    
 
 }
