@@ -7,15 +7,9 @@
 
 import Foundation
 
-enum SectionType: String {
-    case largeBanners = "largeBanners" // main banner with pager
-    case faceIllusion = "faceIllusion" // horizontal scroll
-    case realisticThumbs = "realisticThumbs" //static scroll, max 4 items visible
-    case smallBanners = "smallBanners" // small banner with individual cell in section
-}
-
 struct SectionData {
     let sectionType: SectionType
+    let numberOfItems: NumberOfItems
     let headerTitle: String
     let shouldShowMore: Bool
     let items: [Item]

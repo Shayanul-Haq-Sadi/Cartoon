@@ -10,6 +10,9 @@
 		8762C00E2B987F3D003F153B /* SmallBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762C00C2B987F3D003F153B /* SmallBannerCollectionViewCell.swift */; };
 		8762C00F2B987F3D003F153B /* SmallBannerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8762C00D2B987F3D003F153B /* SmallBannerCollectionViewCell.xib */; };
 		8762C0112B99DEBB003F153B /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762C0102B99DEBB003F153B /* Models.swift */; };
+		8762C0172B9DB4F3003F153B /* PreviewSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762C0162B9DB4F3003F153B /* PreviewSliderViewController.swift */; };
+		876715942B9F14F50025A3E1 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876715932B9F14F50025A3E1 /* Animator.swift */; };
+		876715962B9F18C60025A3E1 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876715952B9F18C60025A3E1 /* Enums.swift */; };
 		96EB1E042B95F9370079E97A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EB1E032B95F9370079E97A /* AppDelegate.swift */; };
 		96EB1E062B95F9370079E97A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EB1E052B95F9370079E97A /* SceneDelegate.swift */; };
 		96EB1E082B95F9370079E97A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EB1E072B95F9370079E97A /* HomeViewController.swift */; };
@@ -31,6 +34,9 @@
 		8762C00C2B987F3D003F153B /* SmallBannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallBannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		8762C00D2B987F3D003F153B /* SmallBannerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallBannerCollectionViewCell.xib; sourceTree = "<group>"; };
 		8762C0102B99DEBB003F153B /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		8762C0162B9DB4F3003F153B /* PreviewSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSliderViewController.swift; sourceTree = "<group>"; };
+		876715932B9F14F50025A3E1 /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		876715952B9F18C60025A3E1 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		96EB1E002B95F9370079E97A /* Cartoon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cartoon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96EB1E032B95F9370079E97A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96EB1E052B95F9370079E97A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				96EB1E072B95F9370079E97A /* HomeViewController.swift */,
+				8762C0162B9DB4F3003F153B /* PreviewSliderViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -73,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				8762C0102B99DEBB003F153B /* Models.swift */,
+				876715952B9F18C60025A3E1 /* Enums.swift */,
 			);
 			name = Model;
 			path = "View Controllers";
@@ -122,6 +130,7 @@
 		8762C0122B9D7C9D003F153B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				876715932B9F14F50025A3E1 /* Animator.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -245,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8762C0172B9DB4F3003F153B /* PreviewSliderViewController.swift in Sources */,
 				96EB1E082B95F9370079E97A /* HomeViewController.swift in Sources */,
 				96EB1E042B95F9370079E97A /* AppDelegate.swift in Sources */,
 				96EB1E292B97194B0079E97A /* TrendingCollectionViewCell.swift in Sources */,
@@ -253,6 +263,8 @@
 				96EB1E062B95F9370079E97A /* SceneDelegate.swift in Sources */,
 				8762C0112B99DEBB003F153B /* Models.swift in Sources */,
 				96EB1E1D2B9603A10079E97A /* HeaderCollectionReusableView.swift in Sources */,
+				876715942B9F14F50025A3E1 /* Animator.swift in Sources */,
+				876715962B9F18C60025A3E1 /* Enums.swift in Sources */,
 				96EB1E192B9601BA0079E97A /* MainBannerCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

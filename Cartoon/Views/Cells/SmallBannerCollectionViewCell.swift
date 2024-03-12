@@ -32,7 +32,7 @@ class SmallBannerCollectionViewCell: UICollectionViewCell {
         containerView.layer.cornerRadius = 12
         containerView.clipsToBounds = true
         tryNowButton.layer.cornerRadius = 8
-//        bannerImageView.image = nil
+        bannerImageView.image = nil
     }
     
     func setup(image: String, title: String, description: String) {

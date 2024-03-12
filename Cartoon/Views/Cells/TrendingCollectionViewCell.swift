@@ -31,7 +31,7 @@ class TrendingCollectionViewCell: UICollectionViewCell {
         containerView.clipsToBounds = true
         premiumImageView.layer.cornerRadius = premiumImageView.frame.width/2
         premiumImageView.isHidden = true
-//        trendingImageView.image = nil
+        trendingImageView.image = nil
     }
     
     func setup(image: String, title: String, isPro: Bool = false) {

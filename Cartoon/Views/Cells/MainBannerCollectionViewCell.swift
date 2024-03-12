@@ -31,7 +31,7 @@ class MainBannerCollectionViewCell: UICollectionViewCell {
     private func setupView() {
         containerView.layer.cornerRadius = 12
         containerView.clipsToBounds = true
-//        bannerImageView.image = nil
+        bannerImageView.image = nil
     }
     
     func setup(image: String, title: String, description: String) {
