@@ -227,11 +227,11 @@ Hello how are you?</string>
 				</dict>
 				<dict>
 					<key>text</key>
-					<string>Abstract_real Title</string>
+					<string>Modern Art_real Title</string>
 					<key>image</key>
-					<string>Abstract_real</string>
+					<string>Modern Art_real</string>
 					<key>description</key>
-					<string>Abstract_real description</string>
+					<string>Modern Art_real description</string>
 					<key>isPro</key>
 					<false/>
 				</dict>

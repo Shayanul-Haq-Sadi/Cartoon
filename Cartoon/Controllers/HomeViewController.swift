@@ -179,9 +179,7 @@ extension HomeViewController: UICollectionViewDelegate {
     func presentSecondViewController(with data: Item) {
         guard let secondViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: PreviewSliderViewController.identifier) as? PreviewSliderViewController else { return }
 
-        // 4
         secondViewController.transitioningDelegate = self
-        
 //        navigationController?.delegate = animator
 
         secondViewController.modalPresentationStyle = .fullScreen
@@ -193,10 +191,7 @@ extension HomeViewController: UICollectionViewDelegate {
 
 
 extension HomeViewController: UIViewControllerTransitioningDelegate {
-
-    // 2
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        // 16
         guard let firstViewController = presenting as? HomeViewController,
             let secondViewController = presented as? PreviewSliderViewController,
             let selectedCellImageViewSnapshot = selectedCellImageViewSnapshot
@@ -206,9 +201,7 @@ extension HomeViewController: UIViewControllerTransitioningDelegate {
         return animator
     }
 
-    // 3
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        // 17
         guard let secondViewController = dismissed as? PreviewSliderViewController,
             let selectedCellImageViewSnapshot = selectedCellImageViewSnapshot
             else { return nil }
