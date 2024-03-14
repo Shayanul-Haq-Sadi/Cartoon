@@ -36,7 +36,18 @@ enum PresentationType {
 }
 
 enum Constants {
-    static let cellSpacing: CGFloat = 28
-    static let gruopSpacing: CGFloat = 16
-    static let sectionSpacing: CGFloat = 16
+    static let gruopSpacing: CGFloat = 14
+    static let sectionSpacing: CGFloat = 28
+    
+    static let sectionTopContentInsets: CGFloat = 16
+    static let sectionLeadingContentInsets: CGFloat = 16
+    static let sectionTrailingContentInsets: CGFloat = 16
+    
+    static let footerHeaderHeight: CGFloat = 20
+    
+    static let largeBannersHeight: CGFloat = 326
+    static let smallBannersHeight: CGFloat = 180
+    static let realisticThumbsHeight: CGFloat = 230
+    static let faceIllusionHeight: CGFloat = 156
+    static let faceIllusionWidth: CGFloat = 124
 }

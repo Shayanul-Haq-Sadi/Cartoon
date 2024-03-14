@@ -13,7 +13,7 @@ class CustomCompositionalLayout: NSObject {
 
     private func createLayout() -> UICollectionViewCompositionalLayout {
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
-        configuration.interSectionSpacing = Constants.cellSpacing //28
+        configuration.interSectionSpacing = Constants.sectionSpacing //28
         
         let layout = UICollectionViewCompositionalLayout(sectionProvider: { (sectionIndex, environment) -> NSCollectionLayoutSection?  in
             guard let sectionData = DataManager.shared.getSectionData(of: sectionIndex) else { return self.createLargeBannersSection() }
@@ -42,13 +42,13 @@ class CustomCompositionalLayout: NSObject {
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
         item.contentInsets.trailing = 10
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.94), heightDimension: .absolute(326)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.94), heightDimension: .absolute(Constants.largeBannersHeight)), subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
-        section.contentInsets.leading = 16
+        section.contentInsets.leading = Constants.sectionLeadingContentInsets
         
-        let footerHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),heightDimension: .absolute(20))
+        let footerHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),heightDimension: .absolute(Constants.footerHeaderHeight))
         let footerWithPager = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerHeaderSize, elementKind: elementKind.footerWithPagerKind.rawValue, alignment: .bottomLeading)
         section.boundarySupplementaryItems = [footerWithPager]
         
@@ -66,14 +66,14 @@ class CustomCompositionalLayout: NSObject {
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
         item.contentInsets.trailing = 10
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .absolute(124), heightDimension: .absolute(156)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .absolute(Constants.faceIllusionWidth), heightDimension: .absolute(Constants.faceIllusionHeight)), subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets.leading = 16
-        section.contentInsets.top = 16
+        section.contentInsets.leading = Constants.sectionLeadingContentInsets
+        section.contentInsets.top = Constants.sectionTopContentInsets
         
-        let footerHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),heightDimension: .absolute(20))
+        let footerHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),heightDimension: .absolute(Constants.footerHeaderHeight))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerHeaderSize, elementKind: elementKind.headerKind.rawValue, alignment: .topLeading)
         section.boundarySupplementaryItems = [header]
         
@@ -86,14 +86,14 @@ class CustomCompositionalLayout: NSObject {
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1)))
         item.contentInsets.trailing = 16
 
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(230)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(Constants.realisticThumbsHeight)), subitems: [item])
 
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets.leading = 16
-        section.interGroupSpacing = 14
-        section.contentInsets.top = 16
+        section.contentInsets.leading = Constants.sectionLeadingContentInsets
+        section.contentInsets.top = Constants.sectionTopContentInsets
+        section.interGroupSpacing = Constants.gruopSpacing
 
-        let footerHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),heightDimension: .absolute(20))
+        let footerHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),heightDimension: .absolute(Constants.footerHeaderHeight))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerHeaderSize, elementKind: elementKind.headerKind.rawValue, alignment: .topLeading)
         section.boundarySupplementaryItems = [header]
 
@@ -105,12 +105,12 @@ class CustomCompositionalLayout: NSObject {
         
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
 
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(180)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(Constants.smallBannersHeight)), subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets.leading = 16
-        section.contentInsets.trailing = 16
-//        section.interGroupSpacing = 14
+        section.contentInsets.leading = Constants.sectionLeadingContentInsets
+        section.contentInsets.trailing = Constants.sectionTrailingContentInsets
+//        section.interGroupSpacing = Constants.gruopSpacing
         
         return section
     }
