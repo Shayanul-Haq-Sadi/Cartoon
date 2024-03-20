@@ -13,7 +13,7 @@ class DataManager {
     
     private var datasource: Dictionary = Dictionary<String, Any>()
     
-    func prepareData() {
+    func prepareDatasource() {
         if let plistPath = Bundle.main.path(forResource: "Datasource", ofType: "plist") {
             // Read datasource data
             if let plistData = FileManager.default.contents(atPath: plistPath) {

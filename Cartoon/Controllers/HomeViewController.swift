@@ -51,9 +51,6 @@ class HomeViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-//        collectionView.backgroundColor = .clear
- 
         view.addSubview(collectionView)
         
         collectionView.refreshControl = UIRefreshControl()
@@ -61,7 +58,7 @@ class HomeViewController: UIViewController {
     }
     
     private func bindData() {
-        DataManager.shared.prepareData()
+        DataManager.shared.prepareDatasource()
     }
 
     @objc private func pullDownToRefresh() {
@@ -103,6 +100,9 @@ extension HomeViewController: UICollectionViewDataSource {
         case elementKind.headerKind.rawValue:
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.headerIdentifier, for: indexPath) as! HeaderCollectionReusableView
             header.setup(head: sectionData.headerTitle, showSeeAll: sectionData.shouldShowMore)
+            header.seeAlltapped = {
+                print("seeAllButtonPressed")
+            }
             return header
             
         case elementKind.footerWithPagerKind.rawValue:

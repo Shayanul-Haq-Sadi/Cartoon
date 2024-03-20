@@ -1,5 +1,5 @@
 //
-//  Models.swift
+//  DataModels.swift
 //  Cartoon
 //
 //  Created by BCL Device-18 on 7/3/24.
@@ -18,6 +18,7 @@ struct SectionData {
 struct Item {
     let text: String
     let image: String
+    let originalImage: String? = nil
     let description: String
     let isPro: Bool
 }

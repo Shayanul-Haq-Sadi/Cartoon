@@ -15,6 +15,8 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     
     @IBOutlet weak var headerBackgroundView: UIView!
     
+    var seeAlltapped: (() -> Void)? = nil
+    
     static let headerIdentifier = "HeaderCollectionReusableView"
     
     override func awakeFromNib() {
@@ -31,4 +33,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         seeAllButton.isHidden = !showSeeAll
     }
     
+    @IBAction func seeAllButtonPressed(_ sender: Any) {
+        seeAlltapped?()
+    }
 }
