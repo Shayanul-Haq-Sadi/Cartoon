@@ -93,7 +93,7 @@ Hello how are you?</string>
 					<key>text</key>
 					<string>Title</string>
 					<key>image</key>
-					<string>AI Cartoon</string>
+					<string>GTA_cartoon</string>
 					<key>description</key>
 					<string>description</string>
 					<key>isPro</key>
@@ -103,7 +103,7 @@ Hello how are you?</string>
 					<key>text</key>
 					<string>Title</string>
 					<key>image</key>
-					<string>AI Cartoon</string>
+					<string>Cyberpunk_cartoon</string>
 					<key>description</key>
 					<string>description</string>
 					<key>isPro</key>
@@ -113,7 +113,7 @@ Hello how are you?</string>
 					<key>text</key>
 					<string>Title</string>
 					<key>image</key>
-					<string>AI Cartoon</string>
+					<string>Art Station_cartoon</string>
 					<key>description</key>
 					<string>description</string>
 					<key>isPro</key>
@@ -123,7 +123,7 @@ Hello how are you?</string>
 					<key>text</key>
 					<string>Title</string>
 					<key>image</key>
-					<string>AI Cartoon</string>
+					<string>Christmas_cartoon</string>
 					<key>description</key>
 					<string>description</string>
 					<key>isPro</key>
@@ -146,57 +146,57 @@ Hello how are you?</string>
 					<key>text</key>
 					<string>Title</string>
 					<key>image</key>
+					<string>GTA_cartoon</string>
+					<key>description</key>
+					<string>description</string>
+					<key>isPro</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>Christmas_cartoon</string>
+					<key>description</key>
+					<string>description</string>
+					<key>isPro</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>Fauvism_cartoon</string>
+					<key>description</key>
+					<string>description</string>
+					<key>isPro</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>Nature_cartoon</string>
+					<key>description</key>
+					<string>description</string>
+					<key>isPro</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>Golden Statue_cartoon</string>
+					<key>description</key>
+					<string>description</string>
+					<key>isPro</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
 					<string>AI Avatar</string>
-					<key>description</key>
-					<string>description</string>
-					<key>isPro</key>
-					<false/>
-				</dict>
-				<dict>
-					<key>text</key>
-					<string>Title</string>
-					<key>image</key>
-					<string>AI Cartoon</string>
-					<key>description</key>
-					<string>description</string>
-					<key>isPro</key>
-					<true/>
-				</dict>
-				<dict>
-					<key>text</key>
-					<string>Title</string>
-					<key>image</key>
-					<string>AI Cartoon</string>
-					<key>description</key>
-					<string>description</string>
-					<key>isPro</key>
-					<false/>
-				</dict>
-				<dict>
-					<key>text</key>
-					<string>Title</string>
-					<key>image</key>
-					<string>AI Cartoon</string>
-					<key>description</key>
-					<string>description</string>
-					<key>isPro</key>
-					<true/>
-				</dict>
-				<dict>
-					<key>text</key>
-					<string>Title</string>
-					<key>image</key>
-					<string>AI Cartoon</string>
-					<key>description</key>
-					<string>description</string>
-					<key>isPro</key>
-					<false/>
-				</dict>
-				<dict>
-					<key>text</key>
-					<string>Title</string>
-					<key>image</key>
-					<string>AI Cartoon</string>
 					<key>description</key>
 					<string>description</string>
 					<key>isPro</key>
@@ -220,6 +220,8 @@ Hello how are you?</string>
 					<string>Abstract_real Title</string>
 					<key>image</key>
 					<string>Abstract_real</string>
+					<key>originalImage</key>
+					<string>Illustration_real</string>
 					<key>description</key>
 					<string>Abstract_real description</string>
 					<key>isPro</key>
@@ -230,6 +232,8 @@ Hello how are you?</string>
 					<string>Modern Art_real Title</string>
 					<key>image</key>
 					<string>Modern Art_real</string>
+					<key>originalImage</key>
+					<string>Concept Art_real</string>
 					<key>description</key>
 					<string>Modern Art_real description</string>
 					<key>isPro</key>
@@ -240,6 +244,8 @@ Hello how are you?</string>
 					<string>Comic_real Title</string>
 					<key>image</key>
 					<string>Comic_real</string>
+					<key>originalImage</key>
+					<string>Pencil_real</string>
 					<key>description</key>
 					<string>Comic_real description</string>
 					<key>isPro</key>
@@ -250,6 +256,8 @@ Hello how are you?</string>
 					<string>Trendy_real Title</string>
 					<key>image</key>
 					<string>Trendy_real</string>
+					<key>originalImage</key>
+					<string>Charcoal_real</string>
 					<key>description</key>
 					<string>Trendy_real description</string>
 					<key>isPro</key>
@@ -259,6 +267,8 @@ Hello how are you?</string>
 					<key>text</key>
 					<string>Modern Art_real Title</string>
 					<key>image</key>
+					<string>Concept Art_real</string>
+					<key>originalImage</key>
 					<string>Modern Art_real</string>
 					<key>description</key>
 					<string>Modern Art_real description</string>
@@ -318,6 +328,82 @@ Hello how are you?</string>
 					<string>Pet_Small</string>
 					<key>description</key>
 					<string>Pet_Small description</string>
+					<key>isPro</key>
+					<true/>
+				</dict>
+			</array>
+		</dict>
+	</array>
+	<key>Download Category</key>
+	<array>
+		<dict>
+			<key>sectionType</key>
+			<string>faceIllusion</string>
+			<key>numberOfItems</key>
+			<integer>0</integer>
+			<key>headerTitle</key>
+			<string>Face Illusion Header</string>
+			<key>shouldShowMore</key>
+			<false/>
+			<key>items</key>
+			<array>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>GTA_cartoon</string>
+					<key>description</key>
+					<string>description</string>
+					<key>isPro</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>Christmas_cartoon</string>
+					<key>description</key>
+					<string>description</string>
+					<key>isPro</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>Fauvism_cartoon</string>
+					<key>description</key>
+					<string>description</string>
+					<key>isPro</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>Nature_cartoon</string>
+					<key>description</key>
+					<string>description</string>
+					<key>isPro</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>Golden Statue_cartoon</string>
+					<key>description</key>
+					<string>description</string>
+					<key>isPro</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>text</key>
+					<string>Title</string>
+					<key>image</key>
+					<string>AI Avatar</string>
+					<key>description</key>
+					<string>description</string>
 					<key>isPro</key>
 					<true/>
 				</dict>

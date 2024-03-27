@@ -18,7 +18,7 @@ struct SectionData {
 struct Item {
     let text: String
     let image: String
-    let originalImage: String? = nil
+    let originalImage: String
     let description: String
     let isPro: Bool
 }

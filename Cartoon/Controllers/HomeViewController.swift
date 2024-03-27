@@ -40,7 +40,7 @@ class HomeViewController: UIViewController {
     }
     
     private func loadCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: CustomCompositionalLayout.layout)
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: CustomCompositionalLayout.homeLayout)
         
         collectionView.register(UINib(nibName: "MainBannerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: MainBannerCollectionViewCell.identifier)
         collectionView.register(UINib(nibName: "SmallBannerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: SmallBannerCollectionViewCell.identifier)
@@ -74,12 +74,12 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        guard let numberOfSections = DataManager.shared.getRootDataCount() else { return 0 }
+        guard let numberOfSections = DataManager.shared.getHomeRootDataCount() else { return 0 }
         return numberOfSections
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let sectionData = DataManager.shared.getSectionData(of: section) else { return 0 }
+        guard let sectionData = DataManager.shared.getHomeSectionData(of: section) else { return 0 }
         
         switch sectionData.numberOfItems {
         case .all:
@@ -94,7 +94,7 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let sectionData = DataManager.shared.getSectionData(of: indexPath.section) else { return UICollectionReusableView() }
+        guard let sectionData = DataManager.shared.getHomeSectionData(of: indexPath.section) else { return UICollectionReusableView() }
         
         switch kind {
         case elementKind.headerKind.rawValue:
@@ -120,7 +120,7 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let sectionData = DataManager.shared.getSectionData(of: indexPath.section) else { return UICollectionViewCell() }
+        guard let sectionData = DataManager.shared.getHomeSectionData(of: indexPath.section) else { return UICollectionViewCell() }
         
         switch sectionData.sectionType {
         case .largeBanners:
@@ -150,7 +150,7 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Tapped: Section \(indexPath.section) item \(indexPath.item)")
-        guard let sectionData = DataManager.shared.getSectionData(of: indexPath.section) else { return }
+        guard let sectionData = DataManager.shared.getHomeSectionData(of: indexPath.section) else { return }
         
         switch sectionData.sectionType {
         case .largeBanners:

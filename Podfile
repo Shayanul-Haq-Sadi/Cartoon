@@ -7,5 +7,6 @@ target 'Cartoon' do
 
   # Pods for Cartoon
 	pod 'Alamofire'
+  pod 'APNGKit', '~> 2.0'
 
 end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8754E3262BAC2DB8001CF8BB /* infinteLoader.png in Resources */ = {isa = PBXBuildFile; fileRef = 8754E3252BAC2DB8001CF8BB /* infinteLoader.png */; };
 		8759674E2BA80A9C00D0A972 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8759674D2BA80A9C00D0A972 /* TimerManager.swift */; };
 		875967502BA81DE500D0A972 /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8759674F2BA81DE500D0A972 /* DownloadViewController.swift */; };
 		8762C00E2B987F3D003F153B /* SmallBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762C00C2B987F3D003F153B /* SmallBannerCollectionViewCell.swift */; };
@@ -18,6 +19,9 @@
 		8766004A2BA026AD0043FD14 /* CustomCompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876600492BA026AD0043FD14 /* CustomCompositionalLayout.swift */; };
 		876715942B9F14F50025A3E1 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876715932B9F14F50025A3E1 /* Animator.swift */; };
 		876715962B9F18C60025A3E1 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876715952B9F18C60025A3E1 /* Enums.swift */; };
+		877AB0302BB42D0B0006340B /* NSLayoutConstraint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877AB02F2BB42D0B0006340B /* NSLayoutConstraint+Extension.swift */; };
+		879CE9E12BB02F11005CEB48 /* ResultCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879CE9E02BB02F11005CEB48 /* ResultCollectionViewCell.xib */; };
+		879CE9E22BB02F11005CEB48 /* ResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879CE9DF2BB02F11005CEB48 /* ResultCollectionViewCell.swift */; };
 		87F46B1D2BAAA8C50031890D /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F46B1C2BAAA8C50031890D /* APIModels.swift */; };
 		96EB1E042B95F9370079E97A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EB1E032B95F9370079E97A /* AppDelegate.swift */; };
 		96EB1E062B95F9370079E97A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EB1E052B95F9370079E97A /* SceneDelegate.swift */; };
@@ -40,6 +44,7 @@
 /* Begin PBXFileReference section */
 		0751795D0599962D49EA9EA0 /* Pods-Cartoon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cartoon.release.xcconfig"; path = "Target Support Files/Pods-Cartoon/Pods-Cartoon.release.xcconfig"; sourceTree = "<group>"; };
 		3A5E8487D2B1061CBC727D43 /* Pods-Cartoon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cartoon.debug.xcconfig"; path = "Target Support Files/Pods-Cartoon/Pods-Cartoon.debug.xcconfig"; sourceTree = "<group>"; };
+		8754E3252BAC2DB8001CF8BB /* infinteLoader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infinteLoader.png; sourceTree = "<group>"; };
 		8759674D2BA80A9C00D0A972 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		8759674F2BA81DE500D0A972 /* DownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
 		8762C00C2B987F3D003F153B /* SmallBannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallBannerCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -51,6 +56,9 @@
 		876600492BA026AD0043FD14 /* CustomCompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCompositionalLayout.swift; sourceTree = "<group>"; };
 		876715932B9F14F50025A3E1 /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		876715952B9F18C60025A3E1 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		877AB02F2BB42D0B0006340B /* NSLayoutConstraint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extension.swift"; sourceTree = "<group>"; };
+		879CE9DF2BB02F11005CEB48 /* ResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCollectionViewCell.swift; sourceTree = "<group>"; };
+		879CE9E02BB02F11005CEB48 /* ResultCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCollectionViewCell.xib; sourceTree = "<group>"; };
 		87F46B1C2BAAA8C50031890D /* APIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
 		898113B88947206DBC816EBB /* Pods_Cartoon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cartoon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96EB1E002B95F9370079E97A /* Cartoon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cartoon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8754E3242BAC2D56001CF8BB /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				8754E3252BAC2DB8001CF8BB /* infinteLoader.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		8762C0062B986AA4003F153B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,14 +108,6 @@
 				8759674F2BA81DE500D0A972 /* DownloadViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		8762C0072B986AC5003F153B /* Mod */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Mod;
-			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		8762C0082B986AEF003F153B /* Views */ = {
@@ -121,6 +129,8 @@
 				8762C00D2B987F3D003F153B /* SmallBannerCollectionViewCell.xib */,
 				96EB1E272B97194B0079E97A /* TrendingCollectionViewCell.swift */,
 				96EB1E282B97194B0079E97A /* TrendingCollectionViewCell.xib */,
+				879CE9DF2BB02F11005CEB48 /* ResultCollectionViewCell.swift */,
+				879CE9E02BB02F11005CEB48 /* ResultCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -143,13 +153,11 @@
 			path = Footer;
 			sourceTree = "<group>";
 		};
-		8762C0122B9D7C9D003F153B /* Helpers */ = {
+		8762C0122B9D7C9D003F153B /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				876715932B9F14F50025A3E1 /* Animator.swift */,
-				8759674D2BA80A9C00D0A972 /* TimerManager.swift */,
 			);
-			name = Helpers;
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		8762C0132B9D7CB1003F153B /* Data */ = {
@@ -168,6 +176,23 @@
 				876600492BA026AD0043FD14 /* CustomCompositionalLayout.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		877AB02D2BB42C840006340B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				876715932B9F14F50025A3E1 /* Animator.swift */,
+				8759674D2BA80A9C00D0A972 /* TimerManager.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		877AB02E2BB42CC00006340B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				877AB02F2BB42D0B0006340B /* NSLayoutConstraint+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		87F46B1B2BAAA85A0031890D /* Models */ = {
@@ -205,10 +230,12 @@
 				96EB1E052B95F9370079E97A /* SceneDelegate.swift */,
 				8762C0132B9D7CB1003F153B /* Data */,
 				87F46B1B2BAAA85A0031890D /* Models */,
-				8762C0072B986AC5003F153B /* Mod */,
 				8762C0082B986AEF003F153B /* Views */,
 				8762C0062B986AA4003F153B /* Controllers */,
-				8762C0122B9D7C9D003F153B /* Helpers */,
+				877AB02E2BB42CC00006340B /* Extensions */,
+				877AB02D2BB42C840006340B /* Helpers */,
+				8762C0122B9D7C9D003F153B /* Helper */,
+				8754E3242BAC2D56001CF8BB /* Resource */,
 				876600482BA025E40043FD14 /* Utility */,
 				96EB1E092B95F9370079E97A /* Main.storyboard */,
 				96EB1E0C2B95F93A0079E97A /* Assets.xcassets */,
@@ -299,10 +326,12 @@
 				96EB1E2A2B97194B0079E97A /* TrendingCollectionViewCell.xib in Resources */,
 				96EB1E1E2B9603A10079E97A /* HeaderCollectionReusableView.xib in Resources */,
 				96EB1E262B960B0F0079E97A /* FooterWithPagerCollectionReusableView.xib in Resources */,
+				8754E3262BAC2DB8001CF8BB /* infinteLoader.png in Resources */,
 				8762C00F2B987F3D003F153B /* SmallBannerCollectionViewCell.xib in Resources */,
 				96EB1E0D2B95F93A0079E97A /* Assets.xcassets in Resources */,
 				96EB1E2C2B974C6B0079E97A /* Datasource.plist in Resources */,
 				96EB1E1A2B9601BA0079E97A /* MainBannerCollectionViewCell.xib in Resources */,
+				879CE9E12BB02F11005CEB48 /* ResultCollectionViewCell.xib in Resources */,
 				96EB1E0B2B95F9370079E97A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87F46B1D2BAAA8C50031890D /* APIModels.swift in Sources */,
+				877AB0302BB42D0B0006340B /* NSLayoutConstraint+Extension.swift in Sources */,
 				8762C0172B9DB4F3003F153B /* PreviewSliderViewController.swift in Sources */,
 				8766004A2BA026AD0043FD14 /* CustomCompositionalLayout.swift in Sources */,
 				875967502BA81DE500D0A972 /* DownloadViewController.swift in Sources */,
@@ -374,6 +404,7 @@
 				8763F0602BA2C2A90015BE12 /* APIManager.swift in Sources */,
 				876600472BA01B4C0043FD14 /* DataManager.swift in Sources */,
 				96EB1E192B9601BA0079E97A /* MainBannerCollectionViewCell.swift in Sources */,
+				879CE9E22BB02F11005CEB48 /* ResultCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,11 +560,13 @@
 				DEVELOPMENT_TEAM = 7BGUM58K2R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Cartoon/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to photo library for selecting photos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to select an image.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -558,11 +591,13 @@
 				DEVELOPMENT_TEAM = 7BGUM58K2R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Cartoon/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to photo library for selecting photos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to select an image.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

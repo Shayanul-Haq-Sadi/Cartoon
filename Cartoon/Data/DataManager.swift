@@ -35,13 +35,25 @@ class DataManager {
         }
     }
     
-    func getRootDataCount() -> Int? {
+    func getHomeRootDataCount() -> Int? {
         guard let rootValue = self.datasource["Home Category"] as? [[String: Any]] else { return nil }
         return rootValue.count
     }
     
-    func getSectionData(of section: Int) -> SectionData? {
+    func getDownloadRootDataCount() -> Int? {
+        guard let rootValue = self.datasource["Download Category"] as? [[String: Any]] else { return nil }
+        return rootValue.count
+    }
+    
+    func getHomeSectionData(of section: Int) -> SectionData? {
         guard let rootValue = self.datasource["Home Category"] as? [[String: Any]],
+              let sectionData = self.parseDictionaryToSectionData(dictionary: rootValue[section])
+        else { return nil }
+        return sectionData
+    }
+    
+    func getDownloadSectionData(of section: Int) -> SectionData? {
+        guard let rootValue = self.datasource["Download Category"] as? [[String: Any]],
               let sectionData = self.parseDictionaryToSectionData(dictionary: rootValue[section])
         else { return nil }
         return sectionData
@@ -65,8 +77,10 @@ class DataManager {
                   let description = itemDict["description"] as? String,
                   let isPro = itemDict["isPro"] as? Bool
             else { return nil }
+            
+            let originalImage = itemDict["originalImage"] as? String
 
-            let item = Item(text: text, image: image, description: description, isPro: isPro)
+            let item = Item(text: text, image: image, originalImage: originalImage ?? "", description: description, isPro: isPro)
             items.append(item)
         }
 

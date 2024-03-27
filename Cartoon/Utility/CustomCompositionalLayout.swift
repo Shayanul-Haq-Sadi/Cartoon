@@ -7,16 +7,18 @@
 
 import UIKit
 
-class CustomCompositionalLayout: NSObject {
+class CustomCompositionalLayout: UICollectionViewLayout {
     
-    static let layout = CustomCompositionalLayout().createLayout()
+    static let homeLayout = CustomCompositionalLayout().createHomeLayout()
+    
+    static let downloadLayout = CustomCompositionalLayout().createDownloadLayout()
 
-    private func createLayout() -> UICollectionViewCompositionalLayout {
+    private func createHomeLayout() -> UICollectionViewCompositionalLayout {
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
         configuration.interSectionSpacing = Constants.sectionSpacing //28
         
         let layout = UICollectionViewCompositionalLayout(sectionProvider: { (sectionIndex, environment) -> NSCollectionLayoutSection?  in
-            guard let sectionData = DataManager.shared.getSectionData(of: sectionIndex) else { return self.createLargeBannersSection() }
+            guard let sectionData = DataManager.shared.getHomeSectionData(of: sectionIndex) else { return self.createLargeBannersSection() }
             
             switch sectionData.sectionType {
             case .largeBanners:
@@ -31,6 +33,17 @@ class CustomCompositionalLayout: NSObject {
             case .smallBanners:
                 return self.createSmallBannersSection()
             }
+        }, configuration: configuration)
+        
+        return layout
+    }
+    
+    private func createDownloadLayout() -> UICollectionViewCompositionalLayout {
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        configuration.interSectionSpacing = Constants.sectionSpacing //28
+        
+        let layout = UICollectionViewCompositionalLayout(sectionProvider: { (sectionIndex, environment) -> NSCollectionLayoutSection?  in
+            return self.createResultSection()
         }, configuration: configuration)
         
         return layout
@@ -111,6 +124,22 @@ class CustomCompositionalLayout: NSObject {
         section.contentInsets.leading = Constants.sectionLeadingContentInsets
         section.contentInsets.trailing = Constants.sectionTrailingContentInsets
 //        section.interGroupSpacing = Constants.gruopSpacing
+        
+        return section
+    }
+    
+    private func createResultSection() -> NSCollectionLayoutSection {
+        print("Result")
+        
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .absolute(72), heightDimension: .absolute(141)), subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.interGroupSpacing = Constants.gruopSpacing
+        section.contentInsets.leading = Constants.sectionLeadingContentInsets
+        section.contentInsets.top = Constants.sectionTopContentInsets
         
         return section
     }

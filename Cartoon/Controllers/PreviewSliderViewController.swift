@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import APNGKit
 
 class PreviewSliderViewController: UIViewController, UINavigationControllerDelegate {
     
@@ -16,26 +17,28 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
     @IBOutlet weak var labelStackView: UIStackView!
     
     @IBOutlet weak var imageContainerView: UIView!
+    @IBOutlet weak var imageContainerAspectRatioConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageContainerViewTopConstraint: NSLayoutConstraint!
+    private var previousAspectRatio: NSLayoutConstraint!
     
+    @IBOutlet weak var afterContainerView: UIView!
     @IBOutlet weak var afterImageView: UIImageView!
-    
     @IBOutlet weak var afterLabelView: UIView!
-    
+        
+    @IBOutlet weak var beforeContainerView: UIView!
+    @IBOutlet weak var beforeContainerViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var beforeImageView: UIImageView!
+    @IBOutlet weak var beforeLabelView: UIView!
+   
     @IBOutlet weak var sliderImageView: UIImageView!
     
-    @IBOutlet weak var beforeContainerView: UIView!
-    
-    @IBOutlet weak var beforeImageView: UIImageView!
+    @IBOutlet weak var targetView: UIView!
     
     @IBOutlet weak var nextButton: UIButton!
     
-    @IBOutlet weak var beforeContainerViewWidthConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var beforeLabelView: UIView!
-    
-    @IBOutlet weak var loaderView: UIView!
-    
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var loaderContainerView: UIView!
+    @IBOutlet weak var activityIndicatorView: APNGImageView!
+    private var activityIndicatorImage: APNGImage!
     
     @IBOutlet weak var cancelButton: UIButton!
     
@@ -51,6 +54,7 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
 
     private var pickedPixelHeight = Int()
     private var pickedPixelWidth = Int()
+    private var pickedImage: UIImage!
 
     private var eta = Double()
     private var result = String()
@@ -69,6 +73,29 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
         beforeContainerView.alpha = 0
         beforeLabelView.alpha = 0
         nextButton.alpha = 0
+        
+        if labelStackView.isHidden == true || nextButton.isHidden == true {
+            closeButton.isHidden = false
+            labelStackView.isHidden = false
+            beforeContainerView.isHidden = false
+            afterLabelView.isHidden = false
+            sliderImageView.isHidden = false
+            nextButton.isHidden = false
+            afterImageView.image = UIImage(named: data.image)
+            
+            imageContainerViewTopConstraint.constant = 28
+            
+            
+//            NSLayoutConstraint.deactivate([self.newHeight, self.newWidth])
+//            imageContainerAspectRatioConstraint = previousAspectRatio
+//            imageContainerAspectRatioConstraint.isActive = true
+            
+            self.imageContainerAspectRatioConstraint.isActive = false
+            self.view.layoutIfNeeded()
+            self.imageContainerAspectRatioConstraint = self.previousAspectRatio.changeMultiplier(multiplier: 59.0 / 81.0)
+            self.imageContainerAspectRatioConstraint.isActive = true
+            self.view.layoutIfNeeded()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,17 +117,42 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
     private func setupView() {
         imageContainerView.layer.cornerRadius = 12
         imageContainerView.clipsToBounds = true
-        afterImageView.image = UIImage(named: data.image)
-        beforeContainerView.clipsToBounds = true
-        beforeImageView.image = UIImage(named: data.image)
-//        beforeImageView.image = UIImage(named: "Modern Art_real")
         
+        afterContainerView.layer.cornerRadius = 12
+        afterContainerView.clipsToBounds = true
+        afterImageView.image = UIImage(named: data.image)
         afterLabelView.layer.cornerRadius = 14
+        
+        previousAspectRatio = self.imageContainerAspectRatioConstraint
+      
+        beforeContainerView.clipsToBounds = true
+        beforeImageView.image = UIImage(named: data.originalImage)
         beforeLabelView.layer.cornerRadius = 14
         
-        loaderView.layer.cornerRadius = 12
-        loaderView.clipsToBounds = true
-        loaderView.isHidden = true
+        
+        loaderContainerView.isHidden = true
+        addActivityIndicatorView()
+        cancelButton.layer.cornerRadius = 20
+    }
+    
+    private func addActivityIndicatorView() {
+        do {
+            if let url = Bundle.main.url(forResource: "infinteLoader", withExtension: "png") {
+                activityIndicatorImage = try APNGImage(fileURL: url, decodingOptions: .fullFirstPass)
+                activityIndicatorView.autoStartAnimationWhenSetImage = false
+                activityIndicatorView.image = activityIndicatorImage
+            }
+        } catch {
+            if let normalImage = error.apngError?.normalImage {
+                activityIndicatorView.staticImage = normalImage
+            } else {
+                print("Error: \(error)")
+            }
+        }
+
+//        activityIndicatorView.onOnePlayDone.delegate(on: self) { (self, count) in
+//            print("Played: \(count)")
+//        }
     }
     
     private func addPanGesture() {
@@ -127,7 +179,7 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
         }
     }
     
-    func animateWidthConstraint(to constant: CGFloat, completion: (() -> Void)?) {
+    private func animateWidthConstraint(to constant: CGFloat, completion: (() -> Void)?) {
         let animator = UIViewPropertyAnimator(duration: 1.0, curve: .easeInOut) {
             self.beforeContainerViewWidthConstraint.constant = constant
             self.view.layoutIfNeeded()
@@ -152,11 +204,33 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
         if let UID = self.UID {
             cancelProcess(UID: UID)
         } else {
-            loaderView.isHidden = true
-            activityIndicator.stopAnimating()
+            loaderContainerView.isHidden = true
+            activityIndicatorView.stopAnimating()
             APIManager.shared.cancelOngoingRequests()
         }
         
+        if labelStackView.isHidden == true || nextButton.isHidden == true {
+            closeButton.isHidden = false
+            labelStackView.isHidden = false
+            beforeContainerView.isHidden = false
+            afterLabelView.isHidden = false
+            sliderImageView.isHidden = false
+            nextButton.isHidden = false
+            afterImageView.image = UIImage(named: data.image)
+            
+            imageContainerViewTopConstraint.constant = 28
+            
+            
+//            NSLayoutConstraint.deactivate([self.newHeight, self.newWidth])
+//            imageContainerAspectRatioConstraint = previousAspectRatio
+//            imageContainerAspectRatioConstraint.isActive = true
+            
+            self.imageContainerAspectRatioConstraint.isActive = false
+            self.view.layoutIfNeeded()
+            self.imageContainerAspectRatioConstraint = self.previousAspectRatio.changeMultiplier(multiplier: 59.0 / 81.0)
+            self.imageContainerAspectRatioConstraint.isActive = true
+            self.view.layoutIfNeeded()
+        }
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
@@ -170,8 +244,8 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
     
     private func uploadImage(imageData: Data) {
         print("uploadImage API CALLED")
-        loaderView.isHidden = false
-        activityIndicator.startAnimating()
+        loaderContainerView.isHidden = false
+        activityIndicatorView.startAnimating()
         
         APIManager.shared.uploadImage(imageData: imageData) { resonse in
             switch resonse {
@@ -250,13 +324,12 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
     private func cancelProcess(UID: String) {
         print("cancelProcess API CALLED")
         
-        
         APIManager.shared.cancelProcess(UID: UID) { resonse in
             switch resonse {
             case .success(let result):
                 print("Cancel successful.", result)
-                self.loaderView.isHidden = true
-                self.activityIndicator.stopAnimating()
+                self.loaderContainerView.isHidden = true
+                self.activityIndicatorView.stopAnimating()
                 self.timerManager.endTimer()
                 APIManager.shared.cancelOngoingRequests()
                 
@@ -275,11 +348,11 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
 
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
-                        self.loaderView.isHidden = true
-                        self.activityIndicator.stopAnimating()
+                        self.loaderContainerView.isHidden = true
+                        self.activityIndicatorView.stopAnimating()
                     }
                     self.saveImageToPhotoLibrary(image)
-                    self.presentDownloadViewController(with: image)
+                    self.presentDownloadViewController(pickedImage: self.pickedImage, resultImage: image)
                 } else {
                     print("Failed to convert data to image")
                 }
@@ -294,11 +367,33 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
         print("Image saved to photo library")
     }
     
-    private func presentDownloadViewController(with image: UIImage) {
+    func animateImageViewToTargetView() {
+        imageContainerView.translatesAutoresizingMaskIntoConstraints = false
+        afterContainerView.translatesAutoresizingMaskIntoConstraints = false
+                
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut, .layoutSubviews], animations: {
+            
+            self.imageContainerViewTopConstraint.constant -= 85
+            
+            self.imageContainerView.frame = self.targetView.bounds
+            
+            self.imageContainerAspectRatioConstraint.isActive = false
+            self.view.layoutIfNeeded()
+                        
+            self.imageContainerAspectRatioConstraint = self.previousAspectRatio.changeMultiplier(multiplier: 4.0 / 5.0)
+            self.imageContainerAspectRatioConstraint.isActive = true
+            self.view.layoutIfNeeded()
+
+        }, completion: nil)
+    }
+    
+    private func presentDownloadViewController(pickedImage: UIImage, resultImage: UIImage) {
         guard let VC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DownloadViewController.identifier) as? DownloadViewController else { return }
 
         VC.modalPresentationStyle = .fullScreen
-        VC.image = image
+        VC.modalTransitionStyle = .crossDissolve
+        VC.pickedImage = pickedImage
+        VC.resultImage = resultImage
         present(VC, animated: true)
 //        self.navigationController?.pushViewController(VC, animated: true)
     }
@@ -308,6 +403,7 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
 extension PreviewSliderViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.pickedImage = pickedImage
             
             if let pixelHeight = pickedImage.cgImage?.height, let pixelWidth = pickedImage.cgImage?.width {
                 print("Width: \(pixelWidth), Height: \(pixelHeight)")
@@ -319,6 +415,20 @@ extension PreviewSliderViewController: UIImagePickerControllerDelegate {
                 print("Failed to convert image to data")
                 return
             }
+            
+            // move imageView
+            closeButton.isHidden = true
+            labelStackView.isHidden = true
+            beforeContainerView.isHidden = true
+            afterLabelView.isHidden = true
+            sliderImageView.isHidden = true
+            nextButton.isHidden = true
+            
+            DispatchQueue.main.async {
+                self.afterImageView.image = pickedImage
+            }
+            
+            animateImageViewToTargetView()
             
             uploadImage(imageData: imageData)
             

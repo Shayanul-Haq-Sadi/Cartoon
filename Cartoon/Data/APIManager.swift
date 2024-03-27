@@ -123,7 +123,7 @@ class APIManager {
         .validate()
         .responseData { response in
             switch response.result {
-            case .success(let value):
+            case .success(_):
                 completion(.success(response.description))
             case .failure(let error):
                 completion(.failure(error))
