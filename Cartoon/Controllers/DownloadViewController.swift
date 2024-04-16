@@ -54,7 +54,11 @@ class DownloadViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        UIView.transition(with: resultImageView, duration: 2.0, options: .transitionCrossDissolve, animations: {
+//        UIView.transition(with: resultImageView, duration: 2.0, options: .transitionCrossDissolve, animations: {
+//            self.resultImageView.image = self.resultImage
+//        }, completion: nil)
+        
+        UIView.animate(withDuration: 1.5, delay: 0.0, options: [.curveEaseIn], animations: {
             self.resultImageView.image = self.resultImage
         }, completion: nil)
         
@@ -66,16 +70,6 @@ class DownloadViewController: UIViewController {
     private func setupView() {
         resultImageView.layer.cornerRadius = 12
         resultImageView.image = pickedImage
-        
-//        if let pixelHeight = resultImage.cgImage?.height, let pixelWidth = resultImage.cgImage?.width {
-//            print("resultImage Width: \(pixelWidth), resultImage Height: \(pixelHeight)")
-//            self.resultPixelWidth = pixelWidth
-//            self.resultPixelHeight = pixelHeight
-//        }
-        
-//        UIView.animate(withDuration: 10.5, delay: 5.0, options: [.curveEaseInOut], animations: {
-//            self.resultImageView.image = self.resultImage
-//        }, completion: nil)
         
         collectionContainerView.clipsToBounds = true
     }
