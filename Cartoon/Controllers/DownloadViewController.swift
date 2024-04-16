@@ -13,7 +13,12 @@ class DownloadViewController: UIViewController {
 
     @IBOutlet weak var closeButton: UIButton!
     
+    @IBOutlet weak var resultContainerView: UIView!
+    
     @IBOutlet weak var resultImageView: UIImageView!
+    
+    @IBOutlet weak var resultImageViewAspectRatioConstraint: NSLayoutConstraint!
+    private var previousAspectRatio: NSLayoutConstraint!
     
     @IBOutlet weak var collectionContainerView: UIView!
     
@@ -31,10 +36,28 @@ class DownloadViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.collectionContainerView.alpha = 0
+        print("resultImage Width: \(resultImage.size.width), resultImage Height: \(resultImage.size.height)")
+        
+        previousAspectRatio = self.resultImageViewAspectRatioConstraint
+        
+        self.resultImageViewAspectRatioConstraint.isActive = false
+        self.view.layoutIfNeeded()
+        self.resultImageViewAspectRatioConstraint = self.previousAspectRatio.changeMultiplier(multiplier: (resultImage.size.width/resultImage.size.height) )
+        self.resultImageViewAspectRatioConstraint.isActive = true
+        self.view.layoutIfNeeded()
+        
+        
+        print("AspectRatio ", resultImage.size.width/resultImage.size.height)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        UIView.transition(with: resultImageView, duration: 2.0, options: .transitionCrossDissolve, animations: {
+            self.resultImageView.image = self.resultImage
+        }, completion: nil)
+        
         UIView.animate(withDuration: 0.3) {
             self.collectionContainerView.alpha = 1
         }
@@ -44,22 +67,27 @@ class DownloadViewController: UIViewController {
         resultImageView.layer.cornerRadius = 12
         resultImageView.image = pickedImage
         
-        UIView.animate(withDuration: 10.5, delay: 5.0, options: [.curveEaseInOut], animations: {
-            self.resultImageView.image = self.resultImage
-        }, completion: nil)
+//        if let pixelHeight = resultImage.cgImage?.height, let pixelWidth = resultImage.cgImage?.width {
+//            print("resultImage Width: \(pixelWidth), resultImage Height: \(pixelHeight)")
+//            self.resultPixelWidth = pixelWidth
+//            self.resultPixelHeight = pixelHeight
+//        }
+        
+//        UIView.animate(withDuration: 10.5, delay: 5.0, options: [.curveEaseInOut], animations: {
+//            self.resultImageView.image = self.resultImage
+//        }, completion: nil)
         
         collectionContainerView.clipsToBounds = true
     }
     
+        
     private func loadCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: CustomCompositionalLayout.downloadLayout)
+        collectionView = UICollectionView(frame: collectionContainerView.bounds, collectionViewLayout: CustomCompositionalLayout.downloadLayout)
         
         collectionView.register(UINib(nibName: "ResultCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: ResultCollectionViewCell.identifier)
     
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        collectionView.frame = collectionContainerView.bounds
         
         collectionView.isSpringLoaded = false
         collectionView.isScrollEnabled = false
