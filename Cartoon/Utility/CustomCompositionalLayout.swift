@@ -38,13 +38,10 @@ class CustomCompositionalLayout: UICollectionViewLayout {
         return layout
     }
     
-    private func createDownloadLayout() -> UICollectionViewCompositionalLayout {
-        let configuration = UICollectionViewCompositionalLayoutConfiguration()
-        configuration.interSectionSpacing = Constants.sectionSpacing //28
-        
+    private func createDownloadLayout() -> UICollectionViewCompositionalLayout {        
         let layout = UICollectionViewCompositionalLayout(sectionProvider: { (sectionIndex, environment) -> NSCollectionLayoutSection?  in
             return self.createResultSection()
-        }, configuration: configuration)
+        })
         
         return layout
     }

@@ -17,9 +17,11 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
     @IBOutlet weak var labelStackView: UIStackView!
     
     @IBOutlet weak var imageContainerView: UIView!
-    @IBOutlet weak var imageContainerAspectRatioConstraint: NSLayoutConstraint!
-    @IBOutlet weak var imageContainerViewTopConstraint: NSLayoutConstraint!
-    private var previousAspectRatio: NSLayoutConstraint!
+    @IBOutlet weak var imageContainerViewHeightConstraint: NSLayoutConstraint! //
+    @IBOutlet weak var imageContainerAspectRatioConstraint: NSLayoutConstraint! //
+    @IBOutlet weak var imageContainerViewTopConstraint: NSLayoutConstraint! //
+    @IBOutlet weak var imageContainerViewLeadingConstraint: NSLayoutConstraint! //
+    @IBOutlet weak var imageContainerViewTrailingConstraint: NSLayoutConstraint! //
     
     @IBOutlet weak var afterContainerView: UIView!
     @IBOutlet weak var afterImageView: UIImageView!
@@ -32,7 +34,20 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
    
     @IBOutlet weak var sliderImageView: UIImageView!
     
-    @IBOutlet weak var targetView: UIView!
+    @IBOutlet weak var pickedImageView: UIImageView!
+    @IBOutlet weak var pickedImageViewAspectRatioConstraint: NSLayoutConstraint!
+    @IBOutlet weak var pickedImageViewCenterYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var pickedImageViewWidthConstraint: NSLayoutConstraint!
+    private var previousAspectRatio: NSLayoutConstraint!
+    private var previousCenterY: NSLayoutConstraint!
+    private var previousWidth: NSLayoutConstraint!
+    //    private var previousHeightConstant: CGFloat! //
+    
+    
+    @IBOutlet weak var targetContainerView: UIView!
+    @IBOutlet weak var targetView: UIImageView!
+    @IBOutlet weak var targetViewAspectRatioConstraint: NSLayoutConstraint!
+    private var previousTargetViewAspectRatio: NSLayoutConstraint!
     
     @IBOutlet weak var nextButton: UIButton!
     
@@ -52,8 +67,8 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
     private var mainImageKey = String()
     private var UID: String? = nil
 
-    private var pickedPixelHeight = Int()
-    private var pickedPixelWidth = Int()
+    private var pickedPixelHeight = CGFloat()
+    private var pickedPixelWidth = CGFloat()
     private var pickedImage: UIImage!
 
     private var eta = Double()
@@ -77,24 +92,54 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
         if labelStackView.isHidden == true || nextButton.isHidden == true {
             closeButton.isHidden = false
             labelStackView.isHidden = false
-            beforeContainerView.isHidden = false
-            afterLabelView.isHidden = false
+//            beforeContainerView.isHidden = false
+//            afterLabelView.isHidden = false
+            imageContainerView.isHidden = false
+            pickedImageView.isHidden = true
             sliderImageView.isHidden = false
             nextButton.isHidden = false
             afterImageView.image = UIImage(named: data.image)
             
-            imageContainerViewTopConstraint.constant = 28
+//            imageContainerViewTopConstraint.constant = 28
+//            imageContainerViewLeadingConstraint.constant = 30
+//            imageContainerViewTrailingConstraint.constant = 30
             
+//            afterImageView.contentMode = .scaleAspectFill
             
 //            NSLayoutConstraint.deactivate([self.newHeight, self.newWidth])
 //            imageContainerAspectRatioConstraint = previousAspectRatio
 //            imageContainerAspectRatioConstraint.isActive = true
             
-            self.imageContainerAspectRatioConstraint.isActive = false
+//            self.imageContainerAspectRatioConstraint.isActive = false
+//            self.view.layoutIfNeeded()
+//            self.imageContainerAspectRatioConstraint = self.previousAspectRatio.changeMultiplier(multiplier: 59.0 / 81.0)
+//            self.imageContainerViewHeightConstraint.constant = self.previousHeightConstant
+//            self.imageContainerAspectRatioConstraint.isActive = true
+//            self.view.layoutIfNeeded()
+            
+            
+            
+            
+            self.pickedImageViewAspectRatioConstraint.isActive = false
             self.view.layoutIfNeeded()
-            self.imageContainerAspectRatioConstraint = self.previousAspectRatio.changeMultiplier(multiplier: 59.0 / 81.0)
-            self.imageContainerAspectRatioConstraint.isActive = true
+            self.pickedImageViewAspectRatioConstraint = self.previousAspectRatio.changeMultiplier(multiplier: (self.imageContainerView.frame.size.width/self.imageContainerView.frame.size.height))
+            self.pickedImageViewAspectRatioConstraint.isActive = true
             self.view.layoutIfNeeded()
+            
+            
+            self.pickedImageViewCenterYConstraint.isActive = false
+            self.view.layoutIfNeeded()
+            self.pickedImageViewCenterYConstraint = self.previousCenterY.changeSecondItem(secondItem: self.imageContainerView)
+            self.pickedImageViewCenterYConstraint.isActive = true
+            self.view.layoutIfNeeded()
+            
+            
+            self.pickedImageViewWidthConstraint.isActive = false
+            self.view.layoutIfNeeded()
+            self.pickedImageViewWidthConstraint = self.previousWidth.changeSecondItem(secondItem: self.imageContainerView)
+            self.pickedImageViewWidthConstraint.isActive = true
+            self.view.layoutIfNeeded()
+            
         }
     }
     
@@ -123,7 +168,15 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
         afterImageView.image = UIImage(named: data.image)
         afterLabelView.layer.cornerRadius = 14
         
-        previousAspectRatio = self.imageContainerAspectRatioConstraint
+//        pickedImageView.backgroundColor = .cyan
+        pickedImageView.layer.cornerRadius = 12
+                
+        previousAspectRatio = self.pickedImageViewAspectRatioConstraint
+        previousCenterY = self.pickedImageViewCenterYConstraint
+        previousWidth = self.pickedImageViewWidthConstraint
+        
+//        previousAspectRatio = self.imageContainerAspectRatioConstraint
+//        previousHeightConstant = self.imageContainerViewHeightConstraint.constant
       
         beforeContainerView.clipsToBounds = true
         beforeImageView.image = UIImage(named: data.originalImage)
@@ -171,7 +224,8 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
         } else if gesture.state == .changed {
             // Move the image view based on the pan gesture
             let newCenterX = initialImageCenter.x + translation.x
-            let clampedX = max(sliderImageView.bounds.width/2, min(imageContainerView.bounds.width - sliderImageView.bounds.width/2, newCenterX))
+//            let clampedX = max(sliderImageView.bounds.width/2, min(imageContainerView.bounds.width - sliderImageView.bounds.width/2, newCenterX))
+            let clampedX = max(0, min(imageContainerView.bounds.width, newCenterX))
             sliderImageView.center = CGPoint(x: clampedX, y: initialImageCenter.y)
             beforeContainerViewWidthConstraint.constant = clampedX
         } else if gesture.state == .ended {
@@ -212,24 +266,56 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
         if labelStackView.isHidden == true || nextButton.isHidden == true {
             closeButton.isHidden = false
             labelStackView.isHidden = false
-            beforeContainerView.isHidden = false
-            afterLabelView.isHidden = false
+//            beforeContainerView.isHidden = false
+//            afterLabelView.isHidden = false
+            imageContainerView.isHidden = false
+            pickedImageView.isHidden = true
             sliderImageView.isHidden = false
             nextButton.isHidden = false
             afterImageView.image = UIImage(named: data.image)
             
-            imageContainerViewTopConstraint.constant = 28
+//            imageContainerViewTopConstraint.constant = 28
+//            imageContainerViewLeadingConstraint.constant = 30
+//            imageContainerViewTrailingConstraint.constant = 30
             
+//            afterImageView.contentMode = .scaleAspectFill
+
             
 //            NSLayoutConstraint.deactivate([self.newHeight, self.newWidth])
 //            imageContainerAspectRatioConstraint = previousAspectRatio
 //            imageContainerAspectRatioConstraint.isActive = true
             
-            self.imageContainerAspectRatioConstraint.isActive = false
+//            self.imageContainerAspectRatioConstraint.isActive = false
+//            self.view.layoutIfNeeded()
+//            self.imageContainerAspectRatioConstraint = self.previousAspectRatio.changeMultiplier(multiplier: 59.0 / 81.0)
+//            self.imageContainerViewHeightConstraint.constant = self.previousHeightConstant
+//            self.imageContainerAspectRatioConstraint.isActive = true
+//            self.view.layoutIfNeeded()
+            
+            
+            
+
+            
+            self.pickedImageViewAspectRatioConstraint.isActive = false
             self.view.layoutIfNeeded()
-            self.imageContainerAspectRatioConstraint = self.previousAspectRatio.changeMultiplier(multiplier: 59.0 / 81.0)
-            self.imageContainerAspectRatioConstraint.isActive = true
+            self.pickedImageViewAspectRatioConstraint = self.previousAspectRatio.changeMultiplier(multiplier: (self.imageContainerView.frame.size.width/self.imageContainerView.frame.size.height))
+            self.pickedImageViewAspectRatioConstraint.isActive = true
             self.view.layoutIfNeeded()
+            
+            
+            self.pickedImageViewCenterYConstraint.isActive = false
+            self.view.layoutIfNeeded()
+            self.pickedImageViewCenterYConstraint = self.previousCenterY.changeSecondItem(secondItem: self.imageContainerView)
+            self.pickedImageViewCenterYConstraint.isActive = true
+            self.view.layoutIfNeeded()
+            
+            
+            self.pickedImageViewWidthConstraint.isActive = false
+            self.view.layoutIfNeeded()
+            self.pickedImageViewWidthConstraint = self.previousWidth.changeSecondItem(secondItem: self.imageContainerView)
+            self.pickedImageViewWidthConstraint.isActive = true
+            self.view.layoutIfNeeded()
+            
         }
     }
     
@@ -367,21 +453,70 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
         print("Image saved to photo library")
     }
     
-    func animateImageViewToTargetView() {
-        imageContainerView.translatesAutoresizingMaskIntoConstraints = false
-        afterContainerView.translatesAutoresizingMaskIntoConstraints = false
+    private func animateImageViewToTargetView() {
+        pickedImageView.translatesAutoresizingMaskIntoConstraints = false
+//        imageContainerView.translatesAutoresizingMaskIntoConstraints = false
+//        afterContainerView.translatesAutoresizingMaskIntoConstraints = false
                 
-        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut, .layoutSubviews], animations: {
+        UIView.animate(withDuration: 1.0, delay: 1.0, options: [.curveEaseInOut], animations: {
             
-            self.imageContainerViewTopConstraint.constant -= 85
+//            self.imageContainerViewLeadingConstraint.constant = 0
+//            self.imageContainerViewTrailingConstraint.constant = 0
+//            
+////            if self.pickedImage.size.width > self.pickedImage.size.height {
+////                self.imageContainerViewTopConstraint.constant -= 55
+////            } else {
+////                self.imageContainerViewTopConstraint.constant -= 85
+////            }
+//            
+//            self.pickedImageView.center = self.targetContainerView.center
+//
+//            
+////            self.imageContainerViewTopConstraint.constant -= 85
+////            self.imageContainerViewTopConstraint.constant -= 55
+////            self.imageContainerViewTopConstraint.constant += self.targetView.bounds.size.height/2
+//            
+//            self.imageContainerViewHeightConstraint.constant = self.targetContainerView.frame.height
+////            self.afterImageView.contentMode = .scaleAspectFit
+////            self.imageContainerView.center = self.targetContainerView.center
+//            
+//            
+//            self.imageContainerAspectRatioConstraint.isActive = false
+//            self.view.layoutIfNeeded()
+//                        
+////            self.imageContainerAspectRatioConstraint = self.previousAspectRatio.changeMultiplier(multiplier: 4.0 / 5.0)
+//            self.imageContainerAspectRatioConstraint = self.previousAspectRatio.changeMultiplier(multiplier: (self.pickedImage.size.width/self.pickedImage.size.height))
+//            self.imageContainerAspectRatioConstraint.isActive = true
+//            self.view.layoutIfNeeded()
+//            
+////            self.imageContainerView.frame = self.targetView.bounds
+//            self.imageContainerView.frame = self.targetContainerView.bounds
             
-            self.imageContainerView.frame = self.targetView.bounds
             
-            self.imageContainerAspectRatioConstraint.isActive = false
+
+            
+            
+            
+            
+            self.pickedImageViewAspectRatioConstraint.isActive = false
             self.view.layoutIfNeeded()
-                        
-            self.imageContainerAspectRatioConstraint = self.previousAspectRatio.changeMultiplier(multiplier: 4.0 / 5.0)
-            self.imageContainerAspectRatioConstraint.isActive = true
+//            self.imageContainerAspectRatioConstraint = self.previousAspectRatio.changeMultiplier(multiplier: 4.0 / 5.0)
+            self.pickedImageViewAspectRatioConstraint = self.previousAspectRatio.changeMultiplier(multiplier: (self.pickedImage.size.width/self.pickedImage.size.height))
+            self.pickedImageViewAspectRatioConstraint.isActive = true
+            self.view.layoutIfNeeded()
+            
+            
+            self.pickedImageViewCenterYConstraint.isActive = false
+            self.view.layoutIfNeeded()
+            self.pickedImageViewCenterYConstraint = self.previousCenterY.changeSecondItem(secondItem: self.targetView)
+            self.pickedImageViewCenterYConstraint.isActive = true
+            self.view.layoutIfNeeded()
+            
+            
+            self.pickedImageViewWidthConstraint.isActive = false
+            self.view.layoutIfNeeded()
+            self.pickedImageViewWidthConstraint = self.previousWidth.changeSecondItem(secondItem: self.targetView)
+            self.pickedImageViewWidthConstraint.isActive = true
             self.view.layoutIfNeeded()
 
         }, completion: nil)
@@ -404,14 +539,11 @@ extension PreviewSliderViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.pickedImage = pickedImage
+            self.pickedPixelWidth = self.pickedImage.size.width
+            self.pickedPixelHeight = self.pickedImage.size.height
+            print("pickedImage Width: \(self.pickedImage.size.width), pickedImage Height: \(self.pickedImage.size.height)")
             
-            if let pixelHeight = pickedImage.cgImage?.height, let pixelWidth = pickedImage.cgImage?.width {
-                print("Width: \(pixelWidth), Height: \(pixelHeight)")
-                self.pickedPixelWidth = pixelWidth
-                self.pickedPixelHeight = pixelHeight
-            }
-            
-            guard let imageData = pickedImage.jpegData(compressionQuality: 1.0) else {
+            guard let fixedOrientationImage = pickedImage.fixedOrientation(), let imageData = fixedOrientationImage.jpegData(compressionQuality: 1.0) else {
                 print("Failed to convert image to data")
                 return
             }
@@ -419,14 +551,29 @@ extension PreviewSliderViewController: UIImagePickerControllerDelegate {
             // move imageView
             closeButton.isHidden = true
             labelStackView.isHidden = true
-            beforeContainerView.isHidden = true
-            afterLabelView.isHidden = true
+//            beforeContainerView.isHidden = true
+//            afterLabelView.isHidden = true
+            imageContainerView.isHidden = true
+            pickedImageView.isHidden = false
             sliderImageView.isHidden = true
             nextButton.isHidden = true
             
             DispatchQueue.main.async {
-                self.afterImageView.image = pickedImage
+//                self.afterImageView.image = pickedImage
+                self.pickedImageView.image = pickedImage
             }
+
+            self.targetView.image = pickedImage
+                
+            self.previousTargetViewAspectRatio = self.targetViewAspectRatioConstraint
+            
+            self.targetViewAspectRatioConstraint.isActive = false
+            self.view.layoutIfNeeded()
+            self.targetViewAspectRatioConstraint = self.previousTargetViewAspectRatio.changeMultiplier(multiplier: (pickedImage.size.width/pickedImage.size.height) )
+            self.targetViewAspectRatioConstraint.isActive = true
+            self.view.layoutIfNeeded()
+            
+            print("AspectRatio ", pickedImage.size.width/pickedImage.size.height)
             
             animateImageViewToTargetView()
             

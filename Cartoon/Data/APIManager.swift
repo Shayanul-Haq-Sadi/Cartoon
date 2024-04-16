@@ -48,7 +48,7 @@ class APIManager {
     }
     
     
-    func getImageIllusionRealisticUID(mainImageKey: String, pixelHeight: Int, pixelWidth: Int, completion: @escaping (Result<Any, Error>) -> Void) {
+    func getImageIllusionRealisticUID(mainImageKey: String, pixelHeight: CGFloat, pixelWidth: CGFloat, completion: @escaping (Result<Any, Error>) -> Void) {
         let url = "http://illusion-realistic.braincraftapps.com/image-illusion"
         let bearerToken = "esdfds3eder45tfdvfsgsfh454rfgrw4fggfdg4tgfgdffgfklg"
         
