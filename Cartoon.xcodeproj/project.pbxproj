@@ -23,6 +23,8 @@
 		879CE9E12BB02F11005CEB48 /* ResultCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879CE9E02BB02F11005CEB48 /* ResultCollectionViewCell.xib */; };
 		879CE9E22BB02F11005CEB48 /* ResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879CE9DF2BB02F11005CEB48 /* ResultCollectionViewCell.swift */; };
 		87A0E5602BB5685900838B4A /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A0E55F2BB5685900838B4A /* UIImage+Extension.swift */; };
+		87D08C0E2BCFA3CD00A12829 /* PanZoomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D08C0D2BCFA3CD00A12829 /* PanZoomImageView.swift */; };
+		87D08C102BCFA51700A12829 /* PanZoomImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D08C0F2BCFA51700A12829 /* PanZoomImageViewController.swift */; };
 		87F46B1D2BAAA8C50031890D /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F46B1C2BAAA8C50031890D /* APIModels.swift */; };
 		96EB1E042B95F9370079E97A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EB1E032B95F9370079E97A /* AppDelegate.swift */; };
 		96EB1E062B95F9370079E97A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EB1E052B95F9370079E97A /* SceneDelegate.swift */; };
@@ -61,6 +63,8 @@
 		879CE9DF2BB02F11005CEB48 /* ResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		879CE9E02BB02F11005CEB48 /* ResultCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCollectionViewCell.xib; sourceTree = "<group>"; };
 		87A0E55F2BB5685900838B4A /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		87D08C0D2BCFA3CD00A12829 /* PanZoomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanZoomImageView.swift; sourceTree = "<group>"; };
+		87D08C0F2BCFA51700A12829 /* PanZoomImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanZoomImageViewController.swift; sourceTree = "<group>"; };
 		87F46B1C2BAAA8C50031890D /* APIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
 		898113B88947206DBC816EBB /* Pods_Cartoon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cartoon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96EB1E002B95F9370079E97A /* Cartoon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cartoon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +112,7 @@
 				96EB1E072B95F9370079E97A /* HomeViewController.swift */,
 				8762C0162B9DB4F3003F153B /* PreviewSliderViewController.swift */,
 				8759674F2BA81DE500D0A972 /* DownloadViewController.swift */,
+				87D08C0F2BCFA51700A12829 /* PanZoomImageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 			children = (
 				876715932B9F14F50025A3E1 /* Animator.swift */,
 				8759674D2BA80A9C00D0A972 /* TimerManager.swift */,
+				87D08C0D2BCFA3CD00A12829 /* PanZoomImageView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -384,6 +390,7 @@
 				877AB0302BB42D0B0006340B /* NSLayoutConstraint+Extension.swift in Sources */,
 				8762C0172B9DB4F3003F153B /* PreviewSliderViewController.swift in Sources */,
 				8766004A2BA026AD0043FD14 /* CustomCompositionalLayout.swift in Sources */,
+				87D08C102BCFA51700A12829 /* PanZoomImageViewController.swift in Sources */,
 				875967502BA81DE500D0A972 /* DownloadViewController.swift in Sources */,
 				96EB1E082B95F9370079E97A /* HomeViewController.swift in Sources */,
 				96EB1E042B95F9370079E97A /* AppDelegate.swift in Sources */,
@@ -391,6 +398,7 @@
 				96EB1E252B960B0F0079E97A /* FooterWithPagerCollectionReusableView.swift in Sources */,
 				8762C00E2B987F3D003F153B /* SmallBannerCollectionViewCell.swift in Sources */,
 				96EB1E062B95F9370079E97A /* SceneDelegate.swift in Sources */,
+				87D08C0E2BCFA3CD00A12829 /* PanZoomImageView.swift in Sources */,
 				8762C0112B99DEBB003F153B /* DataModels.swift in Sources */,
 				8759674E2BA80A9C00D0A972 /* TimerManager.swift in Sources */,
 				96EB1E1D2B9603A10079E97A /* HeaderCollectionReusableView.swift in Sources */,

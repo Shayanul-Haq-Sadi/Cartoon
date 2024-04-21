@@ -163,7 +163,6 @@
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" priority="999" constant="457.32999999999998" id="3Gg-Sj-iso"/>
                                     <constraint firstAttribute="bottom" secondItem="AYg-E5-NiZ" secondAttribute="bottom" id="3cU-te-GWj"/>
                                     <constraint firstItem="Mef-JB-t2J" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SRs-Wg-7IV" secondAttribute="top" id="3wJ-80-FFT"/>
                                     <constraint firstItem="Mef-JB-t2J" firstAttribute="centerX" secondItem="SRs-Wg-7IV" secondAttribute="centerX" id="65z-DM-46J"/>
@@ -306,12 +305,7 @@
                         <outlet property="beforeLabelView" destination="her-Um-mcf" id="71J-Yu-V3A"/>
                         <outlet property="cancelButton" destination="70k-cf-dpb" id="N2T-vE-eJ1"/>
                         <outlet property="closeButton" destination="3je-oN-iRB" id="2L9-jN-p8f"/>
-                        <outlet property="imageContainerAspectRatioConstraint" destination="Nhk-9S-d30" id="RAV-qM-dqp"/>
                         <outlet property="imageContainerView" destination="SRs-Wg-7IV" id="VIQ-wD-KG6"/>
-                        <outlet property="imageContainerViewHeightConstraint" destination="3Gg-Sj-iso" id="xK8-TK-EOA"/>
-                        <outlet property="imageContainerViewLeadingConstraint" destination="ey4-A3-PO4" id="RIJ-u8-GTN"/>
-                        <outlet property="imageContainerViewTopConstraint" destination="dQ3-xe-Jgf" id="qzw-bf-rIA"/>
-                        <outlet property="imageContainerViewTrailingConstraint" destination="uBa-nc-fnK" id="NkV-tm-l7i"/>
                         <outlet property="labelStackView" destination="wxl-cL-ffa" id="RoN-5W-LJh"/>
                         <outlet property="loaderContainerView" destination="D0b-GA-U0F" id="1Ln-1z-t5i"/>
                         <outlet property="nextButton" destination="f2T-RA-gEi" id="cel-6a-7rq"/>
@@ -327,7 +321,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QHU-ab-T5i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2759.5419847328244" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="2682" y="4"/>
         </scene>
         <!--Download View Controller-->
         <scene sceneID="NSa-My-kPn">
@@ -382,11 +376,11 @@
                         <constraints>
                             <constraint firstItem="8SP-1h-iHn" firstAttribute="leading" secondItem="kox-0M-Xas" secondAttribute="leading" id="2J8-fV-xJg"/>
                             <constraint firstItem="Xq7-ci-ZR7" firstAttribute="top" secondItem="kox-0M-Xas" secondAttribute="top" id="4p9-B8-N29"/>
-                            <constraint firstItem="Zgl-OP-51p" firstAttribute="leading" secondItem="kox-0M-Xas" secondAttribute="leading" id="U67-AD-Eig"/>
+                            <constraint firstItem="Zgl-OP-51p" firstAttribute="leading" secondItem="Pbr-d0-Afh" secondAttribute="leading" id="U67-AD-Eig"/>
                             <constraint firstItem="Zgl-OP-51p" firstAttribute="top" secondItem="8SP-1h-iHn" secondAttribute="bottom" constant="16" id="Zmu-KH-v6j"/>
                             <constraint firstItem="kox-0M-Xas" firstAttribute="trailing" secondItem="8SP-1h-iHn" secondAttribute="trailing" id="eIj-zt-WIp"/>
                             <constraint firstItem="8SP-1h-iHn" firstAttribute="top" secondItem="Xq7-ci-ZR7" secondAttribute="bottom" constant="16" id="eM7-MD-rvI"/>
-                            <constraint firstItem="kox-0M-Xas" firstAttribute="trailing" secondItem="Zgl-OP-51p" secondAttribute="trailing" id="iaV-EC-4ro"/>
+                            <constraint firstAttribute="trailing" secondItem="Zgl-OP-51p" secondAttribute="trailing" id="iaV-EC-4ro"/>
                             <constraint firstItem="kox-0M-Xas" firstAttribute="bottom" secondItem="Zgl-OP-51p" secondAttribute="bottom" id="kVk-Sc-JwH"/>
                             <constraint firstItem="Xq7-ci-ZR7" firstAttribute="leading" secondItem="kox-0M-Xas" secondAttribute="leading" constant="16" id="qBf-mS-B23"/>
                         </constraints>
@@ -402,7 +396,48 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YWA-lv-y1V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3393" y="4"/>
+            <point key="canvasLocation" x="3392" y="4"/>
+        </scene>
+        <!--Pan Zoom Image View Controller-->
+        <scene sceneID="prf-He-9Gf">
+            <objects>
+                <viewController storyboardIdentifier="PanZoomImageViewController" id="zng-ds-MzZ" customClass="PanZoomImageViewController" customModule="Cartoon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IZW-oN-DfD">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="10M-bb-QgI" customClass="PanZoomImageView" customModule="Cartoon" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="153" width="393" height="475"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="Christmas_cartoon"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="9. Forest"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="54. Forest River" translatesAutoresizingMaskIntoConstraints="NO" id="3Ko-6s-RmQ">
+                                <rect key="frame" x="111" y="222" width="238" height="256"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25882352939999997" green="0.5450980392" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Kod-y2-Cz7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="10M-bb-QgI" firstAttribute="trailing" secondItem="Kod-y2-Cz7" secondAttribute="trailing" id="7ZM-l8-Cpf"/>
+                            <constraint firstItem="Kod-y2-Cz7" firstAttribute="bottom" secondItem="10M-bb-QgI" secondAttribute="bottom" constant="190" id="8Ft-ds-FQt"/>
+                            <constraint firstItem="10M-bb-QgI" firstAttribute="top" secondItem="Kod-y2-Cz7" secondAttribute="top" constant="50" id="ZIx-aP-nVh"/>
+                            <constraint firstItem="10M-bb-QgI" firstAttribute="leading" secondItem="Kod-y2-Cz7" secondAttribute="leading" id="wLa-A9-4lL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ypj-fh-hiB"/>
+                    <connections>
+                        <outlet property="imageView" destination="3Ko-6s-RmQ" id="hBT-u1-rbo"/>
+                        <outlet property="panImageView" destination="10M-bb-QgI" id="jeS-Rf-J9e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ThV-Jp-UEQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4101.5267175572517" y="3.5211267605633805"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5vV-cx-ijr">
@@ -438,7 +473,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lj1-zg-qWv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2760" y="-787"/>
+            <point key="canvasLocation" x="2682" y="-787"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="T0w-g3-JKl">
@@ -458,8 +493,28 @@
             </objects>
             <point key="canvasLocation" x="3392" y="-787"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VZl-Z3-Bla">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c0Y-my-dJh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mog-dJ-aBH">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zng-ds-MzZ" kind="relationship" relationship="rootViewController" id="h0f-if-ptW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N4G-8R-qjQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4103" y="-787"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="54. Forest River" width="512" height="512"/>
+        <image name="9. Forest" width="512" height="512"/>
         <image name="Abstract_real" width="407" height="512"/>
         <image name="Settings" width="34" height="34"/>
         <image name="Slider_Handle" width="33" height="486"/>
@@ -469,6 +524,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -57,7 +57,9 @@ class APIManager {
         ]
         
         let parameters: [String: Any] = [
-            "text": "Art of Charles Angrand,digital art,cinematic lighting,highly detailed,HD.",
+//            "text": "Art of Charles Angrand,digital art,cinematic lighting,highly detailed,HD.",
+//            "text": "digital art,cinematic lighting,highly detailed,HD.",
+            "text": "cinematic lighting, highly detailed, HD.",
 //            "text": "Cartoon",
 //            "text": "4k, neon,cyberpunk,light rays,cinematic lighting,colorful,volumetric light.",
 //            "text": "Caricature,digital art,burlesque,drawing,highly detailed,HD, Male",

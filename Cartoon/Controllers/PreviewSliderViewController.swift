@@ -17,11 +17,6 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
     @IBOutlet weak var labelStackView: UIStackView!
     
     @IBOutlet weak var imageContainerView: UIView!
-    @IBOutlet weak var imageContainerViewHeightConstraint: NSLayoutConstraint! //
-    @IBOutlet weak var imageContainerAspectRatioConstraint: NSLayoutConstraint! //
-    @IBOutlet weak var imageContainerViewTopConstraint: NSLayoutConstraint! //
-    @IBOutlet weak var imageContainerViewLeadingConstraint: NSLayoutConstraint! //
-    @IBOutlet weak var imageContainerViewTrailingConstraint: NSLayoutConstraint! //
     
     @IBOutlet weak var afterContainerView: UIView!
     @IBOutlet weak var afterImageView: UIImageView!
