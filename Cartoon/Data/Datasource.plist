@@ -349,7 +349,7 @@ Hello how are you?</string>
 			<array>
 				<dict>
 					<key>text</key>
-					<string>Title</string>
+					<string>GTA</string>
 					<key>image</key>
 					<string>GTA_cartoon</string>
 					<key>description</key>
@@ -359,7 +359,7 @@ Hello how are you?</string>
 				</dict>
 				<dict>
 					<key>text</key>
-					<string>Title</string>
+					<string>Christmas</string>
 					<key>image</key>
 					<string>Christmas_cartoon</string>
 					<key>description</key>
@@ -369,7 +369,7 @@ Hello how are you?</string>
 				</dict>
 				<dict>
 					<key>text</key>
-					<string>Title</string>
+					<string>Fauvism</string>
 					<key>image</key>
 					<string>Fauvism_cartoon</string>
 					<key>description</key>
@@ -379,7 +379,7 @@ Hello how are you?</string>
 				</dict>
 				<dict>
 					<key>text</key>
-					<string>Title</string>
+					<string>Nature</string>
 					<key>image</key>
 					<string>Nature_cartoon</string>
 					<key>description</key>
@@ -389,7 +389,7 @@ Hello how are you?</string>
 				</dict>
 				<dict>
 					<key>text</key>
-					<string>Title</string>
+					<string>Golden Statue</string>
 					<key>image</key>
 					<string>Golden Statue_cartoon</string>
 					<key>description</key>
@@ -399,7 +399,7 @@ Hello how are you?</string>
 				</dict>
 				<dict>
 					<key>text</key>
-					<string>Title</string>
+					<string>Avatar</string>
 					<key>image</key>
 					<string>AI Avatar</string>
 					<key>description</key>

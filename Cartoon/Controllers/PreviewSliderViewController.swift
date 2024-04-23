@@ -287,9 +287,11 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
 
                 } else {
                     print("Authentication failed. Invalid response data.")
+                    self.showAlert(title: "Oops!", message: "Something went wrong! Please try again later")
                 }
             case .failure(let error):
                 print("Error: \(error)")
+                self.showAlert(title: "Oops!", message: "Please check your internet connection and try again later.", cancelButtonTitle: "Ok, Got it")
             }
         }
     }
@@ -307,9 +309,11 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
                     
                 } else {
                     print("Authentication failed. Invalid response data.")
+                    self.showAlert(title: "Oops!", message: "Something went wrong! Please try again later")
                 }
             case .failure(let error):
                 print("Error: \(error)")
+                self.showAlert(title: "Oops!", message: "Please check your internet connection and try again later.", cancelButtonTitle: "Ok, Got it")
             }
         }
     }
@@ -343,9 +347,11 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
                     }
                 } else {
                     print("Authentication failed. Invalid response data.")
+                    self.showAlert(title: "Oops!", message: "Something went wrong! Please try again later")
                 }
             case .failure(let error):
                 print("Error: \(error)")
+                self.showAlert(title: "Oops!", message: "Please check your internet connection and try again later.", cancelButtonTitle: "Ok, Got it")
             }
         }
     }
@@ -364,6 +370,7 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
                 
             case .failure(let error):
                 print("Error: \(error)")
+                self.showAlert(title: "Oops!", message: "Please check your internet connection and try again later.", cancelButtonTitle: "Ok, Got it")
             }
         }
     }
@@ -380,13 +387,15 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
                         self.loaderContainerView.isHidden = true
                         self.activityIndicatorView.stopAnimating()
                     }
-                    self.saveImageToPhotoLibrary(image)
+//                    self.saveImageToPhotoLibrary(image)
                     self.presentDownloadViewController(pickedImage: self.pickedImage, resultImage: image)
                 } else {
                     print("Failed to convert data to image")
+                    self.showAlert(title: "Oops!", message: "Something went wrong! Please try again later")
                 }
             case .failure(let error):
                 print("Error downloading image: \(error.localizedDescription)")
+                self.showAlert(title: "Oops!", message: "Please check your internet connection and try again later.", cancelButtonTitle: "Ok, Got it")
             }
         }
     }

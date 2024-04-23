@@ -13,6 +13,8 @@ class DownloadViewController: UIViewController {
 
     @IBOutlet weak var closeButton: UIButton!
     
+    @IBOutlet weak var saveImageButton: UIButton!
+    
     @IBOutlet weak var resultContainerView: UIView!
     
     @IBOutlet weak var resultImageView: UIImageView!
@@ -23,6 +25,10 @@ class DownloadViewController: UIViewController {
     @IBOutlet weak var collectionContainerView: UIView!
     
     private var collectionView: UICollectionView!
+    
+    private var selectedCellIndex: Int = 0
+    
+    private var isImageSaved: Bool = false
     
     var resultImage: UIImage! = UIImage(named: "Christmas_cartoon")
 //    var resultImage: UIImage! = UIImage(named: "85. Oil Painting")
@@ -488,10 +494,28 @@ class DownloadViewController: UIViewController {
         collectionContainerView.addSubview(collectionView)
     }
     
-    @IBAction func closeButtonPressed(_ sender: Any) {
-        dismiss(animated: true)
+    private func saveImageToPhotoLibrary(_ image: UIImage) {
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        print("Image saved to photo library")
+        isImageSaved = true
     }
     
+    @IBAction func closeButtonPressed(_ sender: Any) {
+        if isImageSaved {
+            dismiss(animated: true)
+        } else {
+            showAlert(title: "Are you Sure?", message: "If you Leave now, all your amazing edits will be lost.", defaultButtonTitle: "Discard Creation", cancelButtonTitle: "Keep Editing")
+        }
+    }
+    
+    @IBAction func saveImageButtonPressed(_ sender: Any) {
+        if isImageSaved {
+            showAlert(title: "Already Saved!", message: "Photo already saved")
+        } else {
+            saveImageToPhotoLibrary(resultImage)
+            showAlert(title: "Saved!", message: "Successfully saved your creation to camera roll")
+        }
+    }
 }
 
 
@@ -511,15 +535,24 @@ extension DownloadViewController: UICollectionViewDataSource {
         guard let sectionData = DataManager.shared.getDownloadSectionData(of: indexPath.section) else { return UICollectionViewCell() }
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as? ResultCollectionViewCell else { return UICollectionViewCell() }
-        cell.setup(image: sectionData.items[indexPath.item].image, title: sectionData.items[indexPath.item].text, isPro: sectionData.items[indexPath.item].isPro)
+        if indexPath.item == selectedCellIndex {
+            cell.setup(image: sectionData.items[indexPath.item].image, title: sectionData.items[indexPath.item].text, isPro: sectionData.items[indexPath.item].isPro, Selected: true)
+        } else {
+            cell.setup(image: sectionData.items[indexPath.item].image, title: sectionData.items[indexPath.item].text, isPro: sectionData.items[indexPath.item].isPro, Selected: false)
+        }
+        
         return cell
     }
 }
 
 extension DownloadViewController: UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print("Tapped: Section \(indexPath.section) item \(indexPath.item)")
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Tapped: Section \(indexPath.section) item \(indexPath.item)")
+//        guard let cell = collectionView.cellForItem(at: indexPath) as? ResultCollectionViewCell else { return }
+        
+        selectedCellIndex = indexPath.item
+        collectionView.reloadData()
+    }
     
 }
 

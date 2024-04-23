@@ -17,6 +17,8 @@ class ResultCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var retryContainerView: UIView!
+    
     static let identifier = "ResultCollectionViewCell"
     
     override func awakeFromNib() {
@@ -31,12 +33,17 @@ class ResultCollectionViewCell: UICollectionViewCell {
         premiumImageView.isHidden = true
         resultImageView.layer.cornerRadius = 12
         resultImageView.image = nil
+        
+        retryContainerView.layer.borderWidth = 2
+        retryContainerView.layer.cornerRadius = 12
+        retryContainerView.layer.borderColor = UIColor.white.cgColor
     }
     
-    func setup(image: String, title: String, isPro: Bool = false) {
+    func setup(image: String, title: String, isPro: Bool = false, Selected: Bool = false) {
         resultImageView.image = UIImage(named: image)
         titleLabel.text = title
         premiumImageView.isHidden = !isPro
+        retryContainerView.isHidden = Selected ? false : true
     }
 
 }

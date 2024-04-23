@@ -41,13 +41,41 @@
                                     <constraint firstAttribute="width" constant="16" id="r2t-sz-o2L"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P43-sp-CeI">
+                                <rect key="frame" x="0.0" y="0.0" width="207" height="272.66666666666669"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Ri2-7K-XIp">
+                                        <rect key="frame" x="86.666666666666671" y="111.66666666666667" width="34" height="49.666666666666671"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Retry" translatesAutoresizingMaskIntoConstraints="NO" id="7wl-wb-ebR">
+                                                <rect key="frame" x="0.0" y="0.0" width="34" height="34.333333333333336"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Retry" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T35-hb-cqo">
+                                                <rect key="frame" x="1.666666666666659" y="36.333333333333329" width="30.666666666666671" height="13.333333333333336"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.84625931291390732" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Ri2-7K-XIp" firstAttribute="centerX" secondItem="P43-sp-CeI" secondAttribute="centerX" id="kR1-7b-NAw"/>
+                                    <constraint firstItem="Ri2-7K-XIp" firstAttribute="centerY" secondItem="P43-sp-CeI" secondAttribute="centerY" id="s4G-Ny-1Ka"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Hap-gs-ykv" secondAttribute="bottom" id="6rm-Gw-UiE"/>
                             <constraint firstItem="Hap-gs-ykv" firstAttribute="top" secondItem="XxX-cm-DUo" secondAttribute="top" id="GdP-Zy-lRT"/>
+                            <constraint firstItem="P43-sp-CeI" firstAttribute="trailing" secondItem="buT-rk-GgH" secondAttribute="trailing" id="JqB-fZ-dd3"/>
                             <constraint firstAttribute="trailing" secondItem="A3j-AV-iou" secondAttribute="trailing" constant="8" id="QgG-Z4-sMA"/>
+                            <constraint firstItem="P43-sp-CeI" firstAttribute="leading" secondItem="buT-rk-GgH" secondAttribute="leading" id="f0o-F1-vFT"/>
                             <constraint firstItem="Hap-gs-ykv" firstAttribute="leading" secondItem="XxX-cm-DUo" secondAttribute="leading" id="l58-P2-AbP"/>
+                            <constraint firstItem="P43-sp-CeI" firstAttribute="top" secondItem="buT-rk-GgH" secondAttribute="top" id="qAc-kf-A3o"/>
                             <constraint firstAttribute="trailing" secondItem="Hap-gs-ykv" secondAttribute="trailing" id="qxd-HK-EDP"/>
+                            <constraint firstItem="P43-sp-CeI" firstAttribute="bottom" secondItem="buT-rk-GgH" secondAttribute="bottom" id="vSC-J4-TTA"/>
                             <constraint firstItem="A3j-AV-iou" firstAttribute="top" secondItem="XxX-cm-DUo" secondAttribute="top" constant="8" id="zNn-OW-OZa"/>
                         </constraints>
                     </view>
@@ -65,6 +93,7 @@
                 <outlet property="containerView" destination="XxX-cm-DUo" id="Ufv-S5-F91"/>
                 <outlet property="premiumImageView" destination="A3j-AV-iou" id="Cbq-oJ-hsb"/>
                 <outlet property="resultImageView" destination="buT-rk-GgH" id="PCL-wB-inq"/>
+                <outlet property="retryContainerView" destination="P43-sp-CeI" id="PBZ-jv-AAd"/>
                 <outlet property="titleLabel" destination="icT-2v-r7h" id="5IA-53-9xo"/>
             </connections>
             <point key="canvasLocation" x="-109.16030534351144" y="66.197183098591552"/>
@@ -73,5 +102,6 @@
     <resources>
         <image name="69. Cemetery" width="512" height="512"/>
         <image name="Pro" width="66" height="66"/>
+        <image name="Retry" width="34" height="34.333332061767578"/>
     </resources>
 </document>

@@ -10,6 +10,7 @@
 		8754E3262BAC2DB8001CF8BB /* infinteLoader.png in Resources */ = {isa = PBXBuildFile; fileRef = 8754E3252BAC2DB8001CF8BB /* infinteLoader.png */; };
 		8759674E2BA80A9C00D0A972 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8759674D2BA80A9C00D0A972 /* TimerManager.swift */; };
 		875967502BA81DE500D0A972 /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8759674F2BA81DE500D0A972 /* DownloadViewController.swift */; };
+		87607C182BD7879300E6CD7A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87607C172BD7879300E6CD7A /* UIViewController+Extension.swift */; };
 		8762C00E2B987F3D003F153B /* SmallBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762C00C2B987F3D003F153B /* SmallBannerCollectionViewCell.swift */; };
 		8762C00F2B987F3D003F153B /* SmallBannerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8762C00D2B987F3D003F153B /* SmallBannerCollectionViewCell.xib */; };
 		8762C0112B99DEBB003F153B /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762C0102B99DEBB003F153B /* DataModels.swift */; };
@@ -50,6 +51,7 @@
 		8754E3252BAC2DB8001CF8BB /* infinteLoader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infinteLoader.png; sourceTree = "<group>"; };
 		8759674D2BA80A9C00D0A972 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		8759674F2BA81DE500D0A972 /* DownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
+		87607C172BD7879300E6CD7A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		8762C00C2B987F3D003F153B /* SmallBannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallBannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		8762C00D2B987F3D003F153B /* SmallBannerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallBannerCollectionViewCell.xib; sourceTree = "<group>"; };
 		8762C0102B99DEBB003F153B /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			children = (
 				877AB02F2BB42D0B0006340B /* NSLayoutConstraint+Extension.swift */,
 				87A0E55F2BB5685900838B4A /* UIImage+Extension.swift */,
+				87607C172BD7879300E6CD7A /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				877AB0302BB42D0B0006340B /* NSLayoutConstraint+Extension.swift in Sources */,
 				8762C0172B9DB4F3003F153B /* PreviewSliderViewController.swift in Sources */,
 				8766004A2BA026AD0043FD14 /* CustomCompositionalLayout.swift in Sources */,
+				87607C182BD7879300E6CD7A /* UIViewController+Extension.swift in Sources */,
 				87D08C102BCFA51700A12829 /* PanZoomImageViewController.swift in Sources */,
 				875967502BA81DE500D0A972 /* DownloadViewController.swift in Sources */,
 				96EB1E082B95F9370079E97A /* HomeViewController.swift in Sources */,

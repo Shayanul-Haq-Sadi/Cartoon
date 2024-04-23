@@ -343,6 +343,19 @@
                                     <action selector="closeButtonPressed:" destination="FWn-yy-lcO" eventType="touchUpInside" id="u2Y-Vh-KKp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtI-22-3Wl">
+                                <rect key="frame" x="343" y="103" width="34" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Rve-dQ-8FC"/>
+                                    <constraint firstAttribute="width" constant="34" id="Vmg-Yo-cAM"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button" image="Group 38"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Save"/>
+                                <connections>
+                                    <action selector="saveImageButtonPressed:" destination="FWn-yy-lcO" eventType="touchUpInside" id="fbT-x8-Kdh"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zgl-OP-51p">
                                 <rect key="frame" x="0.0" y="645" width="393" height="173"/>
                                 <constraints>
@@ -376,6 +389,8 @@
                         <constraints>
                             <constraint firstItem="8SP-1h-iHn" firstAttribute="leading" secondItem="kox-0M-Xas" secondAttribute="leading" id="2J8-fV-xJg"/>
                             <constraint firstItem="Xq7-ci-ZR7" firstAttribute="top" secondItem="kox-0M-Xas" secondAttribute="top" id="4p9-B8-N29"/>
+                            <constraint firstItem="wtI-22-3Wl" firstAttribute="top" secondItem="kox-0M-Xas" secondAttribute="top" id="Mpl-oF-XvP"/>
+                            <constraint firstItem="kox-0M-Xas" firstAttribute="trailing" secondItem="wtI-22-3Wl" secondAttribute="trailing" constant="16" id="SIK-mU-c1f"/>
                             <constraint firstItem="Zgl-OP-51p" firstAttribute="leading" secondItem="Pbr-d0-Afh" secondAttribute="leading" id="U67-AD-Eig"/>
                             <constraint firstItem="Zgl-OP-51p" firstAttribute="top" secondItem="8SP-1h-iHn" secondAttribute="bottom" constant="16" id="Zmu-KH-v6j"/>
                             <constraint firstItem="kox-0M-Xas" firstAttribute="trailing" secondItem="8SP-1h-iHn" secondAttribute="trailing" id="eIj-zt-WIp"/>
@@ -392,11 +407,12 @@
                         <outlet property="resultContainerView" destination="8SP-1h-iHn" id="Swn-j4-GNG"/>
                         <outlet property="resultImageView" destination="mMF-mA-H5m" id="wy5-LR-RLo"/>
                         <outlet property="resultImageViewAspectRatioConstraint" destination="iav-Od-vhg" id="FAT-C7-pZD"/>
+                        <outlet property="saveImageButton" destination="wtI-22-3Wl" id="6cU-RV-rH2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YWA-lv-y1V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3392" y="4"/>
+            <point key="canvasLocation" x="3391.6030534351144" y="3.5211267605633805"/>
         </scene>
         <!--Pan Zoom Image View Controller-->
         <scene sceneID="prf-He-9Gf">
@@ -516,6 +532,8 @@
         <image name="54. Forest River" width="512" height="512"/>
         <image name="9. Forest" width="512" height="512"/>
         <image name="Abstract_real" width="407" height="512"/>
+        <image name="Group 38" width="19" height="19"/>
+        <image name="Save" width="19" height="19"/>
         <image name="Settings" width="34" height="34"/>
         <image name="Slider_Handle" width="33" height="486"/>
         <image name="Try Now" width="354" height="52"/>
