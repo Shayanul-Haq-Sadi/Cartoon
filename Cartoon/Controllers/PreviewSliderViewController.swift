@@ -68,6 +68,8 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
     private var result = String()
     private var status = String()
     
+//    private var isCancelled: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -221,6 +223,8 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
+        
+//        self.isCancelled = true
 
         if let UID = self.UID {
             cancelProcess(UID: UID)
@@ -291,7 +295,10 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
                 }
             case .failure(let error):
                 print("Error: \(error)")
-                self.showAlert(title: "Oops!", message: "Please check your internet connection and try again later.", cancelButtonTitle: "Ok, Got it")
+//                if !self.isCancelled {
+//                    self.showAlert(title: "Oops!", message: "Please check your internet connection and try again later.", cancelButtonTitle: "Ok, Got it")
+//                    self.isCancelled = false
+//                }
             }
         }
     }
@@ -313,7 +320,10 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
                 }
             case .failure(let error):
                 print("Error: \(error)")
-                self.showAlert(title: "Oops!", message: "Please check your internet connection and try again later.", cancelButtonTitle: "Ok, Got it")
+//                if !self.isCancelled {
+//                    self.showAlert(title: "Oops!", message: "Please check your internet connection and try again later.", cancelButtonTitle: "Ok, Got it")
+//                    self.isCancelled = false
+//                }
             }
         }
     }
@@ -351,7 +361,10 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
                 }
             case .failure(let error):
                 print("Error: \(error)")
-                self.showAlert(title: "Oops!", message: "Please check your internet connection and try again later.", cancelButtonTitle: "Ok, Got it")
+//                if !self.isCancelled {
+//                    self.showAlert(title: "Oops!", message: "Please check your internet connection and try again later.", cancelButtonTitle: "Ok, Got it")
+//                    self.isCancelled = false
+//                }
             }
         }
     }
@@ -370,7 +383,10 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
                 
             case .failure(let error):
                 print("Error: \(error)")
-                self.showAlert(title: "Oops!", message: "Please check your internet connection and try again later.", cancelButtonTitle: "Ok, Got it")
+//                if !self.isCancelled {
+//                    self.showAlert(title: "Oops!", message: "Please check your internet connection and try again later.", cancelButtonTitle: "Ok, Got it")
+//                    self.isCancelled = false
+//                }
             }
         }
     }
@@ -395,7 +411,10 @@ class PreviewSliderViewController: UIViewController, UINavigationControllerDeleg
                 }
             case .failure(let error):
                 print("Error downloading image: \(error.localizedDescription)")
-                self.showAlert(title: "Oops!", message: "Please check your internet connection and try again later.", cancelButtonTitle: "Ok, Got it")
+//                if !self.isCancelled {
+//                    self.showAlert(title: "Oops!", message: "Please check your internet connection and try again later.", cancelButtonTitle: "Ok, Got it")
+//                    self.isCancelled = false
+//                }
             }
         }
     }

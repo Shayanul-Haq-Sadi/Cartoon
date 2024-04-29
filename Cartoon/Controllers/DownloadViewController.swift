@@ -22,6 +22,12 @@ class DownloadViewController: UIViewController {
     @IBOutlet weak var resultImageViewAspectRatioConstraint: NSLayoutConstraint!
     private var previousAspectRatio: NSLayoutConstraint!
     
+    @IBOutlet weak var resultImageViewWidthConstraint: NSLayoutConstraint! {
+        didSet {
+            print("resultImageViewWidthConstraint ", resultImageViewWidthConstraint.constant)
+        }
+    }
+    
     @IBOutlet weak var collectionContainerView: UIView!
     
     private var collectionView: UICollectionView!
@@ -42,7 +48,11 @@ class DownloadViewController: UIViewController {
     var pinchStartImageCenter: CGPoint!
     var pichCenter: CGPoint!
     
-    var frameActual: CGRect!
+    var frameActual: CGRect! {
+        didSet {
+            print("framactual", frameActual.width, frameActual.height)
+        }
+    }
     
     
     var initialCenter: CGPoint!
@@ -69,6 +79,7 @@ class DownloadViewController: UIViewController {
         // Zoom image
 //        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(self.pinchActionZoomImage))
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(self.pinchRecognized(pinch:)))
+//        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(self.handlePinch(pinch:)))
         pinchGesture.delegate = self
         resultImageView.addGestureRecognizer(pinchGesture)
         
@@ -215,91 +226,65 @@ class DownloadViewController: UIViewController {
         guard let piece = pan.view,
               let superV = piece.superview
         else { return }
+                            
+        let translation = pan.translation(in: superV)
         
         self.initialCenter = piece.center
         
-        if resultContainerView.frame.width < resultImageView.frame.width || resultContainerView.frame.height < resultImageView.frame.height {
-            
-            
-            let translation = pan.translation(in: superV)
-            
-            
-            if pan.state == .began {
-//                self.initialCenter = piece.center
-                
-            }
-            
-            //        if pan.state == .changed {
-            if pan.state != .cancelled {
-                
-                // Store current transfrom of UIImageView
-                let transform = piece.transform
-                
-                // what the new centerX and centerY will be
-                var newX: CGFloat = piece.center.x + translation.x
-                var newY: CGFloat = piece.center.y + translation.y
-                
-                // MAX centerX is 1/2 the width of the piece's frame
-                let mxX = piece.frame.width * 0.5
-                
-                // MIN centerX is Width of superView minus 1/2 the width of the piece's frame
-                let mnX = superV.bounds.width - piece.frame.width * 0.5
-                
-                // make sure new centerX is neither greater than MAX nor less than MIN
-                newX = max(min(newX, mxX), mnX)
-                
-                // MAX centerY is 1/2 the height of the piece's frame
-                let mxY = piece.frame.height * 0.5
-                
-                // MIN centerY is Height of superView minus 1/2 the height of the piece's frame
-                let mnY = superV.bounds.height - piece.frame.height * 0.5
-                
-                // make sure new centerY is neither greater than MAX nor less than MIN
-                newY = max(min(newY, mxY), mnY)
-                
-                // set the new center
-                piece.center = CGPoint(x: newX, y: newY)
-                
-                // reset recognizer
-                pan.setTranslation(.zero, in: superV)
-                
-                // Revert resultImageView.transform
-                piece.transform = transform
-                
-//                enforceBounds()
-            }
-        }
-        else {
-            piece.center = initialCenter
-//            enforceBounds()
+        if pan.state == .began {
+//            self.initialCenter = piece.center
         }
         
-//        if pan.state == .ended {
-//            piece.center = initialCenter
-//        }
+        if pan.state != .cancelled {
+            
+            // Store current transfrom of UIImageView
+//            let transform = piece.transform
+            
+            // what the new centerX and centerY will be
+            var newX: CGFloat = piece.center.x + translation.x
+            var newY: CGFloat = piece.center.y + translation.y
+            
+            // MAX centerX is 1/2 the width of the piece's frame
+            let mxX = piece.frame.width * 0.5
+            
+            // MIN centerX is Width of superView minus 1/2 the width of the piece's frame
+            let mnX = superV.bounds.width - piece.frame.width * 0.5
+            
+            // make sure new centerX is neither greater than MAX nor less than MIN
+            newX = max(min(newX, mxX), mnX)
+            
+            // MAX centerY is 1/2 the height of the piece's frame
+            let mxY = piece.frame.height * 0.5
+            
+            // MIN centerY is Height of superView minus 1/2 the height of the piece's frame
+            let mnY = superV.bounds.height - piece.frame.height * 0.5
+            
+            // make sure new centerY is neither greater than MAX nor less than MIN
+            newY = max(min(newY, mxY), mnY)
+            
+            // set the new center
+            if superV.frame.width < piece.frame.width && superV.frame.height < piece.frame.height {
+                // move on all axis
+                piece.center = CGPoint(x: newX, y: newY)
+            } else if superV.frame.width < piece.frame.width {
+                // move on x axis
+                piece.center = CGPoint(x: newX, y: piece.center.y)
+            } else if superV.frame.height < piece.frame.height {
+                // move on y axis
+                piece.center = CGPoint(x: piece.center.x, y: newY)
+            } else {
+                piece.center = initialCenter
+            }
+            
+            // reset recognizer
+            pan.setTranslation(.zero, in: superV)
+            
+            // Revert resultImageView.transform
+//            piece.transform = transform
+        }
     }
     
-    private func enforceBounds() {
-        let imageViewFrame = resultImageView.frame
-        let containerViewBounds = resultContainerView.bounds
-        
-        var newFrame = imageViewFrame
-        
-        if imageViewFrame.origin.x > containerViewBounds.maxX - imageViewFrame.width {
-            newFrame.origin.x = containerViewBounds.maxX - imageViewFrame.width
-        }
-        if imageViewFrame.origin.x < containerViewBounds.minX {
-            newFrame.origin.x = containerViewBounds.minX
-        }
-        if imageViewFrame.origin.y > containerViewBounds.maxY - imageViewFrame.height {
-            newFrame.origin.y = containerViewBounds.maxY - imageViewFrame.height
-        }
-        if imageViewFrame.origin.y < containerViewBounds.minY {
-            newFrame.origin.y = containerViewBounds.minY
-        }
-        
-        resultImageView.frame = newFrame
-    }
+    var lastScale = 1.0
     
     
     @objc func pinchRecognized(pinch: UIPinchGestureRecognizer) {
@@ -326,17 +311,117 @@ class DownloadViewController: UIViewController {
             let touchPoint2 = pinch.location(ofTouch: 1, in: piece)
             
             self.pichCenter = CGPoint(x: (touchPoint1.x + touchPoint2.x) / 2, y: (touchPoint1.y + touchPoint2.y) / 2)
+//            self.pichCenter = pinch.location(in: piece)
             
         }
         if pinch.state == .changed { // Pinching in operating
+            // Store scale
             
-//            let pinchCenter = CGPoint(x: pinch.location(in: piece).x - piece.bounds.midX, y: pinch.location(in: piece).y - piece.bounds.midY)
+            let pinchCenter11 = pinch.location(in: piece)
+//            print("pinchCenter11 ", pinchCenter11, pinchCenter11.x, pinchCenter11.y)
             
-            let transform = piece.transform
-//                .translatedBy(x: pichCenter.x, y: pichCenter.y)
-                .scaledBy(x: pinch.scale, y: pinch.scale)
-//                .translatedBy(x: -pichCenter.x, y: -pichCenter.y)
-            piece.transform = transform
+            if resultContainerView.frame.width < resultImageView.frame.width || resultContainerView.frame.height < resultImageView.frame.height { // zoom in state
+                print("bigger")
+                let pinchCenter = CGPoint(x: pinch.location(in: piece).x - piece.bounds.midX, y: pinch.location(in: piece).y - piece.bounds.midY)
+                
+//                print("pinchCenter ", pinchCenter)
+                
+//                piece.center = CGPoint(x: superV.center.x , y: superV.center.y)
+                
+                if piece.center ==  CGPoint(x: superV.frame.size.width / 2, y: superV.frame.size.height / 2) {
+                    print("piece in center ")
+                    
+                    let transform = piece.transform
+                        .scaledBy(x: pinch.scale, y: pinch.scale)
+                    
+                    piece.transform = transform
+                }
+//                else if piece.center.x > superV.frame.size.width / 2 && piece.center.y > superV.frame.size.height / 2 {
+//                    // center in bottom right means top left aligned
+//                    print(" bottom right ")
+//                    
+////                    piece.center = CGPoint(x: piece.center.x * pinch.scale, y: piece.center.y * pinch.scale) // it works on top left
+//                    
+//                    let transform = piece.transform
+//                        .scaledBy(x: pinch.scale, y: pinch.scale)
+//                    piece.transform = transform
+//                }
+//                else if piece.center.x > superV.frame.size.width / 2 && piece.center.y < superV.frame.size.height / 2 {
+//                    // center in top right means bottm left aligned
+//                    print(" top right ")
+//                    
+////                    piece.center = CGPoint(x: (piece.center.x * (1 - pinch.scale)), y: piece.center.y * pinch.scale) // it works
+//                    
+//                    let transform = piece.transform
+//                        .scaledBy(x: pinch.scale, y: pinch.scale)
+//                    piece.transform = transform
+//                }
+//                else if piece.center.x < superV.frame.size.width / 2 && piece.center.y < superV.frame.size.height / 2 {
+//                    // center in top left means bottm right aligned
+//                    print(" top left ")
+//                    
+////                    piece.center = CGPoint(x: piece.center.x * pinch.scale, y: piece.center.y * pinch.scale) // it works on top left
+//                    
+//                    let transform = piece.transform
+//                        .scaledBy(x: pinch.scale, y: pinch.scale)
+//                    piece.transform = transform
+//                }
+//                else if piece.center.x < superV.frame.size.width / 2 && piece.center.y > superV.frame.size.height / 2 {
+//                    // center in bottom left means top right aligned
+//                    print(" bottom left ")
+//                    
+////                    piece.center = CGPoint(x: piece.center.x * pinch.scale, y: piece.center.y * pinch.scale) // it works on top left
+//                    
+//                    let transform = piece.transform
+//                        .scaledBy(x: pinch.scale, y: pinch.scale)
+//                    piece.transform = transform
+//                }
+//                 make other variation with quadrants
+                else { // it works
+                    print("piece not in center ")
+                    let transform = piece.transform
+                        .scaledBy(x: pinch.scale, y: pinch.scale)
+                    
+//                    piece.anchorPoint = CGPoint(x: 0, y: 1)
+                    piece.center = CGPoint(x: piece.center.x * pinch.scale, y: piece.center.y * pinch.scale) // it works on top left
+//                    piece.center = CGPoint(x: piece.center.x * (1 - pinch.scale), y: piece.center.y * (1 - pinch.scale)) // it works on top left
+//                    piece.center = CGPoint(x: (piece.center.x * pinch.scale), y: piece.center.y * pinch.scale)
+//                    piece.center = CGPoint(x: (superV.frame.size.width / 2) * pinch.scale, y: (superV.frame.size.height / 2) * pinch.scale)
+                    piece.transform = transform
+                }
+                
+                
+                let transform = piece.transform
+//                    .translatedBy(x: pinchCenter.x, y: pinchCenter.y)
+//                    .translatedBy(x: -pinchCenter11.x, y: -pinchCenter11.y)
+                    .scaledBy(x: pinch.scale, y: pinch.scale)
+//                    .translatedBy(x: -pinchCenter.x, y: -pinchCenter.y)
+//                    .translatedBy(x: pinchCenter11.x, y: pinchCenter11.y)
+                
+//                piece.transform = transform
+                
+//                piece.frame.intersection(<#T##r2: CGRect##CGRect#>)
+//                piece.frame.intersects(<#T##rect2: CGRect##CGRect#>)
+
+            }
+//            else if resultContainerView.frame.width < resultImageView.frame.width {
+//                print("bigger in width")
+//            }
+//            else if resultContainerView.frame.height < resultImageView.frame.height {
+//                print("bigger in width")
+//            }
+            else { // zoom out state
+                print("smaller")
+                
+                let transform = piece.transform
+                //                .translatedBy(x: pichCenter.x, y: pichCenter.y)
+//                                .translatedBy(x: pinchCenter.x, y: pinchCenter.y)
+                    .scaledBy(x: pinch.scale, y: pinch.scale)
+                //                .translatedBy(x: -pichCenter.x, y: -pichCenter.y)
+//                                .translatedBy(x: -pinchCenter.x, y: -pinchCenter.y)
+                piece.transform = transform
+                
+            }
             
             pinch.scale = 1
             
@@ -357,14 +442,40 @@ class DownloadViewController: UIViewController {
             } else if self.maxScale <= currentScale { // Upper higher scale limit
                 UIView.animate(withDuration: 0.2, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {() -> Void in
                     
-                    piece.center = CGPoint(x: superV.frame.size.width / 2, y: superV.frame.size.height / 2)
+//                    piece.center = CGPoint(x: superV.frame.size.width / 2, y: superV.frame.size.height / 2)
                     piece.transform = CGAffineTransform(scaleX: self.maxScale, y: self.maxScale)
                     
                 }, completion: {(finished: Bool) -> Void in
                 })
             }
             
+//            if piece.center !=  CGPoint(x: superV.frame.size.width / 2, y: superV.frame.size.height / 2) {
+//                UIView.animate(withDuration: 0.2, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {() -> Void in
+//                    
+//                    piece.center = CGPoint(x: superV.frame.size.width / 2, y: superV.frame.size.height / 2)
+//                    piece.transform = CGAffineTransform(scaleX: self.minScale, y: self.minScale)
+//                    
+//                    
+//                }, completion: {(finished: Bool) -> Void in
+//                })
+//            }
+            
+            var frame = piece.frame
+            print("Views new frame Height=\(frame.size.height)")
+            print("Views new bound Height=\(piece.bounds.size.height)")
+            print("Views new scale from Height=\(piece.frame.size.height/piece.bounds.size.height)")
+            print("Views currentScale=\(currentScale)")
+            
+            print("Views new Width=\(frame.size.width)")
+            print("Views new x1=\(frame.minX), x2=\(frame.maxX)")
+            print("Views new b x1=\(piece.bounds.minX), x2=\(piece.bounds.maxX)")
+            print("Views new origin x=\(piece.frame.origin.x), y=\(piece.frame.origin.y)")
+            
         }
+        
+        // only less than min will center
+        // greter than max no center
+        // otherwise no center
         
         
         
@@ -394,6 +505,64 @@ class DownloadViewController: UIViewController {
 //        
     }
     
+//    var initialSize: CGSize = .zero
+    
+    var initialWidth: CGFloat = 0.0
+    
+    
+    @objc private func handlePinch(pinch: UIPinchGestureRecognizer) {
+//        if pinch.state == .began || pinch.state == .changed {
+//            // Use the x or y scale, they should be the same for typical zooming (non-skewing)
+////            float currentScale = [[pinchGesture.view.layer valueForKeyPath:@"transform.scale.x"] floatValue];
+////            var currentScale = pinch.scale
+//            let currentScale = sqrt(abs(resultImageView.transform.a * resultImageView.transform.d - resultImageView.transform.b * resultImageView.transform.c))
+//            
+//            // Variables to adjust the max/min values of zoom
+//            var minScale = 1.0
+//            var maxScale = 2.0
+//            var zoomSpeed = 0.5
+//            
+//            var deltaScale = pinch.scale
+//            
+//            // You need to translate the zoom to 0 (origin) so that you
+//            // can multiply a speed factor and then translate back to "zoomSpace" around 1
+//            deltaScale = ((deltaScale - 1) * zoomSpeed) + 1;
+//            
+//            // Limit to min/max size (i.e maxScale = 2, current scale = 2, 2/2 = 1.0)
+//            //  A deltaScale is ~0.99 for decreasing or ~1.01 for increasing
+//            //  A deltaScale of 1.0 will maintain the zoom size
+//            deltaScale = min(deltaScale, maxScale / currentScale)
+//            deltaScale = max(deltaScale, minScale / currentScale)
+//            
+//            let zoomTransform = CGAffineTransformScale(resultImageView.transform, deltaScale, deltaScale)
+//            resultImageView.transform = zoomTransform
+//            
+//            // Reset to 1 for scale delta's
+//            //  Note: not 0, or we won't see a size: 0 * width = 0
+//            pinch.scale = 1
+//            
+//        }
+        
+        
+        if pinch.state == .began || pinch.state == .changed {
+            // Get the scale factor from the gesture
+            let scale = pinch.scale
+            
+            // Scale the constants of the width and height constraints proportionally
+            let scaledWidth = initialWidth * scale
+            //                let scaledHeight = initialHeight * scale
+            
+            // Update the constants of the constraints
+//            resultImageViewWidthConstraint.constant = scaledWidth
+            //                heightConstraint.constant = scaledHeight
+            
+            
+            
+//            pinch.scale = 1
+        }
+    }
+    
+    
     @objc private func handleDoubleTap(tap: UITapGestureRecognizer) {
         // unwrap the view from the gesture
         // AND
@@ -422,12 +591,6 @@ class DownloadViewController: UIViewController {
             }, completion: {(finished: Bool) -> Void in
             })
         }
-        
-//        if zoomScale == minScale {
-//            setZoomScale(2, animated: true)
-//        } else {
-//            setZoomScale(minScale, animated: true)
-//        }
     }
 
     
@@ -454,8 +617,16 @@ class DownloadViewController: UIViewController {
         super.viewDidAppear(animated)
         
         UIView.transition(with: resultImageView, duration: 2.0, options: .transitionCrossDissolve, animations: {
+//            self.resultImageViewWidthConstraint.constant =  self.resultImage.size.width
             self.resultImageView.image = self.resultImage
-        }, completion: nil)
+        }) { _ in
+            self.frameActual = self.resultImageView.frame
+            
+            // Store the initial size of the scalable object
+//            self.initialSize = self.resultImageView.frame.size
+            
+//            self.initialWidth = self.resultImageViewWidthConstraint.constant
+        }
         
 //        UIView.animate(withDuration: 1.5, delay: 0.0, options: [.curveEaseOut], animations: {
 //            self.resultImageView.image = self.resultImage
@@ -464,8 +635,6 @@ class DownloadViewController: UIViewController {
 //        UIView.animate(withDuration: 0.3) {
 //            self.collectionContainerView.alpha = 1
 //        }
-        
-        self.frameActual = self.resultImageView.frame
     }
     
     private func setupView() {
@@ -475,6 +644,7 @@ class DownloadViewController: UIViewController {
         resultImageView.layer.cornerRadius = 12
         resultImageView.backgroundColor = .clear
         resultImageView.image = pickedImage
+//        resultImageViewWidthConstraint.constant = pickedImage.size.width
         
         collectionContainerView.clipsToBounds = true
     }
